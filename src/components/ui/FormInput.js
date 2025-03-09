@@ -12,7 +12,7 @@ const FormInput = ({
   placeholder = ' '
 }) => {
   return (
-    <div className="relative group">
+    <div className="relative">
       <input
         type={type}
         name={name}
@@ -20,14 +20,21 @@ const FormInput = ({
         onChange={onChange}
         placeholder={placeholder}
         required={required}
-        className={`w-full px-5 py-4 bg-gray-800/50 rounded-xl text-white border
+        className={`w-full px-5 pt-6 pb-2 bg-gray-800/50 rounded-xl text-white border
                    ${error ? 'border-red-500' : 'border-gray-600'}
                    focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20
-                   transition-all duration-300 placeholder-shown:border-gray-700 peer`}
+                   transition-all duration-300 peer`}
       />
-      <label className="absolute left-5 top-4 text-gray-400 transition-all duration-300
-                      peer-focus:-translate-y-7 peer-focus:text-sm peer-focus:text-primary-400
-                      peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:text-sm">
+      <label 
+        className={`absolute text-gray-400 duration-300 transform -translate-y-3
+                   top-5 left-5 z-10 origin-[0] peer-focus:text-primary-400
+                   peer-placeholder-shown:scale-100 
+                   peer-placeholder-shown:translate-y-0
+                   peer-focus:scale-75
+                   peer-focus:-translate-y-4
+                   ${value ? 'scale-75 -translate-y-4' : ''}
+                   ${error ? 'text-red-500' : 'text-gray-400'}`}
+      >
         {label}
       </label>
       {error && (
