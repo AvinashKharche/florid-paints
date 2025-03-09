@@ -1,7 +1,5 @@
 import React from 'react';
 import ColorPicker from './features/ColorPicker/ColorPicker';
-import ServiceCard from './ui/ServiceCard';
-import PaintTypeCard from './ui/PaintTypeCard';
 import { SERVICES, PAINT_TYPES, TESTIMONIALS } from '../constants/data';
 import Layout from './layout/Layout';
 import HeroSection from './sections/HeroSection';
