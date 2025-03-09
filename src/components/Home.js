@@ -62,32 +62,32 @@ const TESTIMONIALS = [
   {
     id: 1,
     name: 'Rajesh Kumar',
-    location: 'Mumbai, Maharashtra',
-    image: '/images/testimonial-1.jpg',
+    location: 'Contractor, Indore',
+    image: '/images/testimonial-1.png',
     text: 'The team at FloridPaints transformed our home completely. Their attention to detail and professional approach made the entire process smooth and hassle-free. The quality of paint and workmanship is exceptional!',
     rating: 5
   },
   {
     id: 2,
     name: 'Priya Sharma',
-    location: 'Delhi, NCR',
-    image: '/images/testimonial-2.jpg',
+    location: 'Home Owner, Indore',
+    image: '/images/testimonial-2.png',
     text: 'I was amazed by the color selection process. Their color expert helped me choose the perfect shade for each room. The paint quality is superb, and the finish looks absolutely stunning. Highly recommended!',
     rating: 5
   },
   {
     id: 3,
     name: 'Amit Patel',
-    location: 'Ahmedabad, Gujarat',
-    image: '/images/testimonial-3.jpg',
+    location: 'VP, Financial Services, Indore',
+    image: '/images/testimonial-3.png',
     text: 'Outstanding service from start to finish! The team was punctual, professional, and the results exceeded our expectations. Our office looks brand new with the fresh paint job.',
     rating: 5
   },
   {
     id: 4,
-    name: 'Sneha Reddy',
-    location: 'Bangalore, Karnataka',
-    image: '/images/testimonial-4.jpg',
+    name: 'Anubha Seth',
+    location: 'Business Owner, Indore',
+    image: '/images/testimonial-4.png',
     text: 'The durability of the paint is impressive. Even after a year, the colors look as fresh as day one. Their expertise in color combinations really helped us create the perfect ambiance.',
     rating: 5
   }
@@ -137,6 +137,14 @@ const PaintTypeCard = ({ type }) => (
 const Home = () => {
   const [currentPair, setCurrentPair] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    projectType: '',
+    details: ''
+  });
+  const [formErrors, setFormErrors] = useState({});
 
   useEffect(() => {
     if (!isAutoPlaying) return;
@@ -158,9 +166,58 @@ const Home = () => {
     setIsAutoPlaying(false);
   };
 
+  const validateForm = () => {
+    const errors = {};
+    const phoneRegex = /^[0-9]{10}$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!formData.name.trim()) {
+      errors.name = 'Name is required';
+    }
+
+    if (!formData.email.trim()) {
+      errors.email = 'Email is required';
+    } else if (!emailRegex.test(formData.email)) {
+      errors.email = 'Please enter a valid email';
+    }
+
+    if (!formData.phone.trim()) {
+      errors.phone = 'Phone number is required';
+    } else if (!phoneRegex.test(formData.phone.replace(/[^0-9]/g, ''))) {
+      errors.phone = 'Please enter a valid 10-digit phone number';
+    }
+
+    if (!formData.details.trim()) {
+      errors.details = 'Project details are required';
+    }
+
+    return errors;
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+    // Clear error when user starts typing
+    if (formErrors[name]) {
+      setFormErrors(prev => ({
+        ...prev,
+        [name]: ''
+      }));
+    }
+  };
+
   const handleGetQuote = (e) => {
     e.preventDefault();
-    console.log('Form submitted');
+    const errors = validateForm();
+    if (Object.keys(errors).length === 0) {
+      console.log('Form submitted', formData);
+      // Here you would typically send the data to your backend
+    } else {
+      setFormErrors(errors);
+    }
   };
 
   return (
@@ -384,44 +441,79 @@ const Home = () => {
                   <div className="relative group">
                     <input
                       type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
                       placeholder=" "
-                      required
-                      className="w-full px-5 py-4 bg-gray-800/50 rounded-xl text-white border border-gray-600
-                               focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20
-                               transition-all duration-300 placeholder-shown:border-gray-700 peer"
+                      className={`w-full px-5 py-4 bg-gray-800/50 rounded-xl text-white border ${
+                        formErrors.name ? 'border-red-500' : 'border-gray-600'
+                      } focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20
+                      transition-all duration-300 placeholder-shown:border-gray-700 peer`}
                     />
                     <label className="absolute left-5 top-4 text-gray-400 transition-all duration-300
                                     peer-focus:-translate-y-7 peer-focus:text-sm peer-focus:text-primary-400
                                     peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:text-sm">
                       Your Name
                     </label>
+                    {formErrors.name && (
+                      <span className="text-red-500 text-xs mt-1">{formErrors.name}</span>
+                    )}
                   </div>
                   <div className="relative group">
                     <input
                       type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
                       placeholder=" "
-                      required
-                      className="w-full px-5 py-4 bg-gray-800/50 rounded-xl text-white border border-gray-600
-                               focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20
-                               transition-all duration-300 placeholder-shown:border-gray-700 peer"
+                      className={`w-full px-5 py-4 bg-gray-800/50 rounded-xl text-white border ${
+                        formErrors.email ? 'border-red-500' : 'border-gray-600'
+                      } focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20
+                      transition-all duration-300 placeholder-shown:border-gray-700 peer`}
                     />
                     <label className="absolute left-5 top-4 text-gray-400 transition-all duration-300
                                     peer-focus:-translate-y-7 peer-focus:text-sm peer-focus:text-primary-400
                                     peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:text-sm">
                       Email Address
                     </label>
+                    {formErrors.email && (
+                      <span className="text-red-500 text-xs mt-1">{formErrors.email}</span>
+                    )}
                   </div>
                 </div>
 
                 <div className="relative group">
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    placeholder=" "
+                    className={`w-full px-5 py-4 bg-gray-800/50 rounded-xl text-white border ${
+                      formErrors.phone ? 'border-red-500' : 'border-gray-600'
+                    } focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20
+                    transition-all duration-300 placeholder-shown:border-gray-700 peer`}
+                  />
+                  <label className="absolute left-5 top-4 text-gray-400 transition-all duration-300
+                                  peer-focus:-translate-y-7 peer-focus:text-sm peer-focus:text-primary-400
+                                  peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:text-sm">
+                    Phone Number
+                  </label>
+                  {formErrors.phone && (
+                    <span className="text-red-500 text-xs mt-1">{formErrors.phone}</span>
+                  )}
+                </div>
+
+                <div className="relative group">
                   <select
-                    required
-                    defaultValue=""
+                    name="projectType"
+                    value={formData.projectType}
+                    onChange={handleInputChange}
                     className="w-full px-5 py-4 bg-gray-800/50 rounded-xl text-white border border-gray-600
                              focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20
                              transition-all duration-300 appearance-none cursor-pointer"
                   >
-                    <option value="" disabled>Select Project Type</option>
+                    <option value="">Select Project Type (Optional)</option>
                     <option value="interior">Interior Painting</option>
                     <option value="exterior">Exterior Painting</option>
                     <option value="commercial">Commercial Painting</option>
@@ -436,18 +528,24 @@ const Home = () => {
 
                 <div className="relative group">
                   <textarea
+                    name="details"
+                    value={formData.details}
+                    onChange={handleInputChange}
                     rows="4"
                     placeholder=" "
-                    required
-                    className="w-full px-5 py-4 bg-gray-800/50 rounded-xl text-white border border-gray-600
-                             focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20
-                             transition-all duration-300 placeholder-shown:border-gray-700 peer resize-none"
+                    className={`w-full px-5 py-4 bg-gray-800/50 rounded-xl text-white border ${
+                      formErrors.details ? 'border-red-500' : 'border-gray-600'
+                    } focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20
+                    transition-all duration-300 placeholder-shown:border-gray-700 peer resize-none`}
                   ></textarea>
                   <label className="absolute left-5 top-4 text-gray-400 transition-all duration-300
                                   peer-focus:-translate-y-7 peer-focus:text-sm peer-focus:text-primary-400
                                   peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:text-sm">
                     Project Details
                   </label>
+                  {formErrors.details && (
+                    <span className="text-red-500 text-xs mt-1">{formErrors.details}</span>
+                  )}
                 </div>
 
                 <button
