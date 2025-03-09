@@ -3,7 +3,7 @@ const fs = require('fs').promises;
 const path = require('path');
 
 async function generateIcons() {
-  const svgPath = path.join(__dirname, '../src/assets/images/logos/paintpro-icon.svg');
+  const svgPath = path.join(__dirname, '../src/assets/images/logos/floridpaints-icon.svg');
   const publicDir = path.join(__dirname, '../public');
 
   try {
