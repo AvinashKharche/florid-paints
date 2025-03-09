@@ -17,6 +17,7 @@ const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     projectType: '',
     details: ''
   });
@@ -39,8 +40,11 @@ const ContactSection = () => {
       errors.email = 'Please enter a valid email';
     }
 
-    if (!formData.projectType) {
-      errors.projectType = 'Please select a project type';
+    const phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$/;
+    if (!formData.phone.trim()) {
+      errors.phone = 'Phone number is required';
+    } else if (!phoneRegex.test(formData.phone.trim())) {
+      errors.phone = 'Please enter a valid phone number';
     }
 
     if (!formData.details.trim()) {
@@ -82,6 +86,7 @@ const ContactSection = () => {
         setFormData({
           name: '',
           email: '',
+          phone: '',
           projectType: '',
           details: ''
         });
@@ -128,14 +133,24 @@ const ContactSection = () => {
               />
             </div>
 
+            <FormInput
+              type="tel"
+              name="phone"
+              value={formData.phone}
+              onChange={handleInputChange}
+              label="Phone Number"
+              error={formErrors.phone}
+              required
+              placeholder="e.g., 123-456-7890"
+            />
+
             <FormSelect
               name="projectType"
               value={formData.projectType}
               onChange={handleInputChange}
-              label="Select Project Type"
+              label="Project Type (Optional)"
               options={PROJECT_TYPES}
               error={formErrors.projectType}
-              required
             />
 
             <FormTextArea

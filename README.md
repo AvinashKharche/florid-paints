@@ -4,19 +4,61 @@ A modern web application for a professional painting service company, built with
 
 ## Features
 
-- Modern, responsive design
-- Interactive color picker with trending, classic, and modern color palettes
-- Professional painting services showcase
-- Contact form for quote requests
-- Smooth scrolling navigation
-- Mobile-friendly interface
+- 🎨 Modern, responsive design with smooth animations
+- 🎯 Interactive color picker with trending, classic, and modern color palettes
+- 🏠 Professional painting services showcase
+- 📱 Mobile-friendly interface with glass morphism effects
+- 🔄 Smooth scrolling navigation
+- 📝 Enhanced contact form with:
+  - Floating label animations
+  - Real-time validation
+  - Toast notifications
+  - Phone number integration
+  - Optional project type selection
 
-## Technologies Used
+## Tech Stack
 
-- React
-- Tailwind CSS
-- React Router
-- React Colorful (for color picker)
+- **Frontend Framework**: React 18
+- **Styling**: Tailwind CSS with custom animations
+- **Form Handling**: Custom form components with validation
+- **UI Components**: 
+  - Reusable button component with variants
+  - Form inputs with floating labels
+  - Toast notifications
+  - Section layouts
+  - Icon system
+
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── features/        # Feature-specific components
+│   │   └── ColorPicker/
+│   ├── layout/         # Layout components
+│   │   ├── Header.js
+│   │   ├── Footer.js
+│   │   ├── Layout.js
+│   │   └── SectionLayout.js
+│   ├── sections/       # Page sections
+│   │   ├── HeroSection.js
+│   │   ├── ServicesSection.js
+│   │   ├── PaintSelectionSection.js
+│   │   ├── TestimonialsSection.js
+│   │   └── ContactSection.js
+│   └── ui/            # Reusable UI components
+│       ├── Button.js
+│       ├── FormInput.js
+│       ├── FormSelect.js
+│       ├── FormTextArea.js
+│       ├── Icon.js
+│       └── Toast.js
+├── hooks/             # Custom hooks
+│   ├── useAnimation.js
+│   └── useScrollToSection.js
+└── constants/        # Application constants
+    └── data.js
+```
 
 ## Getting Started
 
@@ -37,19 +79,25 @@ npm start
 
 4. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-## Project Structure
-
-- `/src/components` - React components
-  - `/features` - Feature-specific components (ColorPicker, PaintProduct)
-  - `/layout` - Layout components (Header, Footer)
-- `/public` - Static assets
-
 ## Available Scripts
 
 - `npm start` - Runs the app in development mode
 - `npm test` - Launches the test runner
 - `npm run build` - Builds the app for production
 - `npm run eject` - Ejects from Create React App (one-way operation)
+
+## Form Features
+
+The contact form includes several enhanced features:
+
+- **Floating Labels**: Smooth animations for better user experience
+- **Validation**:
+  - Required fields: Name, Email, Phone, Project Details
+  - Optional fields: Project Type
+  - Real-time email and phone number format validation
+- **Toast Notifications**: Success and error messages
+- **Responsive Layout**: Adapts to different screen sizes
+- **Accessibility**: ARIA labels and keyboard navigation
 
 ## Contributing
 
