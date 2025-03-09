@@ -87,6 +87,15 @@ const Footer = () => {
                       </button>
                     </li>
                     <li>
+                      <button onClick={() => scrollToSection('testimonials')}
+                              className="text-gray-300 hover:text-primary-400 text-sm transition-all duration-300 hover:translate-x-1 flex items-center space-x-2">
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                        </svg>
+                        <span>Testimonials</span>
+                      </button>
+                    </li>
+                    <li>
                       <button onClick={() => scrollToSection('contact')}
                               className="text-gray-300 hover:text-primary-400 text-sm transition-all duration-300 hover:translate-x-1 flex items-center space-x-2">
                         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -139,36 +148,59 @@ const Footer = () => {
                   <h3 className="text-primary-400 text-sm font-bold tracking-wider uppercase mb-4">
                     Contact Us
                   </h3>
-                  <ul className="space-y-4">
-                    <li className="flex items-start space-x-3">
-                      <svg className="w-5 h-5 text-primary-400 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                      </svg>
-                      <div className="text-gray-300 text-sm">
-                        <p>123 Paint Street</p>
-                        <p>Mumbai, Maharashtra 400001</p>
-                      </div>
-                    </li>
-                    <li className="flex items-center space-x-3">
-                      <svg className="w-5 h-5 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                      </svg>
+                  <div className="space-y-6">
+                    <div>
+                      <p className="text-gray-300 text-sm mb-3">Call Us Anytime:</p>
                       <a href="tel:+919876543210" 
-                         className="text-gray-300 hover:text-primary-400 text-sm transition-colors">
-                        +91 98765 43210
+                         className="group bg-primary-500/10 hover:bg-primary-500/20 rounded-lg p-3 text-primary-400 hover:text-primary-300 transition-all duration-300 flex items-center space-x-3 mb-2">
+                        <svg className="w-6 h-6 group-hover:scale-110 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                        </svg>
+                        <div>
+                          <span className="block text-sm font-medium">Quick Connect</span>
+                          <span className="block text-base font-bold">+91 98765 43210</span>
+                        </div>
                       </a>
-                    </li>
-                    <li className="flex items-center space-x-3">
-                      <svg className="w-5 h-5 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                      </svg>
-                      <a href="mailto:info@floridpaints.in"
-                         className="text-gray-300 hover:text-primary-400 text-sm transition-colors">
-                        info@floridpaints.in
-                      </a>
-                    </li>
-                  </ul>
+                      <div className="flex flex-col space-y-2 mt-2">
+                        <span className="text-gray-400 text-xs">• Instant quotes & estimates</span>
+                        <span className="text-gray-400 text-xs">• General inquiries</span>
+                        <span className="text-gray-400 text-xs">• Customer support</span>
+                      </div>
+                    </div>
+                    <div>
+                      <div className="flex items-center my-4">
+                        <div className="h-px flex-1 bg-gray-800"></div>
+                        <span className="px-3 text-gray-500 text-xs">other ways to reach us</span>
+                        <div className="h-px flex-1 bg-gray-800"></div>
+                      </div>
+                      <div className="space-y-4">
+                        <button onClick={() => scrollToSection('contact')}
+                                className="w-full bg-gray-800/50 hover:bg-gray-800/70 rounded-lg p-3 text-gray-300 hover:text-primary-400 transition-all duration-300 flex items-center justify-center space-x-2">
+                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                          </svg>
+                          <span>Detailed Quote Form</span>
+                        </button>
+                        <div className="flex items-start space-x-3">
+                          <svg className="w-5 h-5 text-primary-400 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                          </svg>
+                          <div className="text-gray-300 text-sm">
+                            <p>123 Paint Street</p>
+                            <p>Mumbai, Maharashtra 400001</p>
+                          </div>
+                        </div>
+                        <a href="mailto:info@floridpaints.in"
+                           className="flex items-center space-x-3 text-gray-300 hover:text-primary-400 transition-colors">
+                          <svg className="w-5 h-5 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                          </svg>
+                          <span className="text-sm">info@floridpaints.in</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
