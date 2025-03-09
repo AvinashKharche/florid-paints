@@ -6,6 +6,7 @@ import { SERVICES, PAINT_TYPES, TESTIMONIALS } from '../constants/data';
 import Layout from './layout/Layout';
 import HeroSection from './sections/HeroSection';
 import ServicesSection from './sections/ServicesSection';
+import PaintSelectionSection from './sections/PaintSelectionSection';
 
 const Home = () => {
   const [currentPair, setCurrentPair] = useState(0);
@@ -40,28 +41,7 @@ const Home = () => {
     <Layout>
       <HeroSection />
       <ServicesSection />
-
-      {/* Paint Selection Section */}
-      <section id="paint-selection" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Premium Paints</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Discover our selection of high-quality paints for every project
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            {PAINT_TYPES.map((type, index) => (
-              <div key={index} className="animate-fade-in" style={{ animationDelay: `${index * 0.2}s` }}>
-                <PaintTypeCard type={type} />
-              </div>
-            ))}
-          </div>
-          <div className="bg-gray-50 rounded-xl p-12 shadow-lg animate-scale-in">
-            <ColorPicker />
-          </div>
-        </div>
-      </section>
+      <PaintSelectionSection />
 
       {/* Testimonials Section */}
       <section id="testimonials" className="py-24 bg-gradient-to-b from-gray-50 to-white">
