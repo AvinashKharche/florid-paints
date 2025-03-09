@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Toast from '../ui/Toast';
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +11,7 @@ const ContactSection = () => {
 
   const [formErrors, setFormErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [toast, setToast] = useState(null);
 
   const validateForm = () => {
     const errors = {};
@@ -55,6 +57,10 @@ const ContactSection = () => {
     }
   };
 
+  const showToast = (message, type) => {
+    setToast({ message, type });
+  };
+
   const handleGetQuote = async (e) => {
     e.preventDefault();
     const errors = validateForm();
@@ -73,15 +79,16 @@ const ContactSection = () => {
           projectType: '',
           details: ''
         });
-        // You could add a success message here
+        showToast('Quote request submitted successfully! We\'ll get back to you soon.', 'success');
       } catch (error) {
         console.error('Error submitting form:', error);
-        // You could add an error message here
+        showToast('Failed to submit quote request. Please try again.', 'error');
       } finally {
         setIsSubmitting(false);
       }
     } else {
       setFormErrors(errors);
+      showToast('Please fix the errors in the form.', 'error');
     }
   };
 
@@ -218,6 +225,13 @@ const ContactSection = () => {
           </div>
         </div>
       </div>
+      {toast && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          onClose={() => setToast(null)}
+        />
+      )}
     </section>
   );
 };
