@@ -60,7 +60,7 @@ export const TESTIMONIALS = [
     id: 1,
     name: 'Rajesh Kumar',
     location: 'Contractor, Indore',
-    image: '/images/testimonial-1.png',
+    image: '/images/testimonials/testimonial-1.png',
     text: 'The team at FloridPaints transformed our home completely. Their attention to detail and professional approach made the entire process smooth and hassle-free. The quality of paint and workmanship is exceptional!',
     rating: 5
   },
@@ -68,7 +68,7 @@ export const TESTIMONIALS = [
     id: 2,
     name: 'Priya Sharma',
     location: 'Home Owner, Indore',
-    image: '/images/testimonial-2.png',
+    image: '/images/testimonials/testimonial-2.png',
     text: 'I was amazed by the color selection process. Their color expert helped me choose the perfect shade for each room. The paint quality is superb, and the finish looks absolutely stunning. Highly recommended!',
     rating: 5
   },
@@ -76,7 +76,7 @@ export const TESTIMONIALS = [
     id: 3,
     name: 'Amit Patel',
     location: 'VP, Financial Services, Indore',
-    image: '/images/testimonial-3.png',
+    image: '/images/testimonials/testimonial-3.png',
     text: 'Outstanding service from start to finish! The team was punctual, professional, and the results exceeded our expectations. Our office looks brand new with the fresh paint job.',
     rating: 5
   },
@@ -84,7 +84,7 @@ export const TESTIMONIALS = [
     id: 4,
     name: 'Anubha Seth',
     location: 'Business Owner, Indore',
-    image: '/images/testimonial-4.png',
+    image: '/images/testimonials/testimonial-4.png',
     text: 'The durability of the paint is impressive. Even after a year, the colors look as fresh as day one. Their expertise in color combinations really helped us create the perfect ambiance.',
     rating: 5
   }
