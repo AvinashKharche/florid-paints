@@ -32,33 +32,63 @@ A modern web application for a professional painting service company, built with
 
 ```
 src/
+├── assets/           # Static assets
+│   └── images/       # Images imported in components
+│       ├── logos/    # Brand and partner logos
+│       ├── services/ # Service-related images
+│       ├── backgrounds/ # Background images
+│       └── icons/    # Custom icons
 ├── components/
-│   ├── features/        # Feature-specific components
+│   ├── features/     # Feature-specific components
 │   │   └── ColorPicker/
-│   ├── layout/         # Layout components
+│   ├── layout/      # Layout components
 │   │   ├── Header.js
 │   │   ├── Footer.js
 │   │   ├── Layout.js
 │   │   └── SectionLayout.js
-│   ├── sections/       # Page sections
+│   ├── sections/    # Page sections
 │   │   ├── HeroSection.js
 │   │   ├── ServicesSection.js
 │   │   ├── PaintSelectionSection.js
 │   │   ├── TestimonialsSection.js
 │   │   └── ContactSection.js
-│   └── ui/            # Reusable UI components
+│   └── ui/         # Reusable UI components
 │       ├── Button.js
 │       ├── FormInput.js
 │       ├── FormSelect.js
 │       ├── FormTextArea.js
 │       ├── Icon.js
 │       └── Toast.js
-├── hooks/             # Custom hooks
+├── hooks/          # Custom hooks
 │   ├── useAnimation.js
 │   └── useScrollToSection.js
-└── constants/        # Application constants
+└── constants/     # Application constants
     └── data.js
+
+public/
+├── images/        # Large, static images
+│   ├── interior-service.png
+│   ├── exterior-service.png
+│   └── commercial-service.png
+└── videos/        # Video assets
+    └── hero-bg.mp4
 ```
+
+## Image Organization
+
+The project follows these guidelines for image organization:
+
+- **src/assets/images/**: For images that are:
+  - Imported directly into components
+  - Need webpack processing and optimization
+  - Smaller in size (< 100KB)
+  - Used frequently across components
+
+- **public/images/**: For:
+  - Large image files (> 1MB)
+  - Images loaded dynamically
+  - Images that don't need processing
+  - Static assets referenced by absolute paths
 
 ## Getting Started
 
