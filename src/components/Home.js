@@ -3,6 +3,7 @@ import ColorPicker from './features/ColorPicker/ColorPicker';
 import ServiceCard from './ui/ServiceCard';
 import PaintTypeCard from './ui/PaintTypeCard';
 import { SERVICES, PAINT_TYPES, TESTIMONIALS } from '../constants/data';
+import Layout from './layout/Layout';
 
 const Home = () => {
   const [currentPair, setCurrentPair] = useState(0);
@@ -34,7 +35,7 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen">
+    <Layout>
       {/* Hero Section */}
       <section id="hero" className="relative h-screen flex items-center justify-center bg-gray-900 text-white overflow-hidden">
         <video 
@@ -334,7 +335,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-    </div>
+    </Layout>
   );
 };
 
