@@ -22,7 +22,7 @@ A modern web application for a professional painting service company, built with
 
 1. Clone the repository:
 ```bash
-git clone [repository-url]
+git clone https://github.com/AvinashKharche/florid-paints.git
 ```
 
 2. Install dependencies:
