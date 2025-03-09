@@ -1,13 +1,6 @@
 import React from 'react';
 
 const HeroSection = () => {
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <section id="hero" className="relative h-screen flex items-center justify-center bg-gray-900 text-white overflow-hidden">
       <video 
@@ -30,14 +23,14 @@ const HeroSection = () => {
         </p>
         <div className="flex flex-col sm:flex-row gap-6 justify-center">
           <button 
-            onClick={() => scrollToSection('services')}
+            onClick={() => document.getElementById('services').scrollIntoView({ behavior: 'smooth' })}
             className="px-8 py-4 bg-primary-600 text-white rounded-full text-lg font-semibold 
                      hover:bg-primary-700 transition-all duration-300 hover:shadow-lg hover-lift"
           >
             Our Services
           </button>
           <button 
-            onClick={() => scrollToSection('contact')}
+            onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
             className="px-8 py-4 bg-transparent border-2 border-white text-white rounded-full 
                      text-lg font-semibold hover:bg-white hover:text-gray-900 transition-all duration-300 hover:shadow-lg hover-lift"
           >
