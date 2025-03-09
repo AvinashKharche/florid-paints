@@ -1,4 +1,5 @@
 import React from 'react';
+import heroBgVideo from '../../assets/videos/hero-bg.mp4';
 
 const HeroSection = () => {
   return (
@@ -10,7 +11,7 @@ const HeroSection = () => {
         playsInline
         className="absolute inset-0 w-full h-full object-cover opacity-40"
       >
-        <source src="/videos/hero-bg.mp4" type="video/mp4" />
+        <source src={heroBgVideo} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       <div className="absolute inset-0 bg-gradient-overlay"></div>

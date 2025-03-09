@@ -33,11 +33,12 @@ A modern web application for a professional painting service company, built with
 ```
 src/
 ├── assets/           # Static assets
-│   └── images/       # Images imported in components
-│       ├── logos/    # Brand and partner logos
-│       ├── services/ # Service-related images
-│       ├── backgrounds/ # Background images
-│       └── icons/    # Custom icons
+│   ├── images/       # Images imported in components
+│   │   ├── logos/    # Brand and partner logos
+│   │   ├── services/ # Service-related images
+│   │   ├── backgrounds/ # Background images
+│   │   └── icons/    # Custom icons
+│   └── videos/       # Video assets
 ├── components/
 │   ├── features/     # Feature-specific components
 │   │   └── ColorPicker/
@@ -65,30 +66,36 @@ src/
 └── constants/     # Application constants
     └── data.js
 
-public/
-├── images/        # Large, static images
+public/             # Static files served directly
+├── images/         # Large, static images
 │   ├── interior-service.png
 │   ├── exterior-service.png
 │   └── commercial-service.png
-└── videos/        # Video assets
-    └── hero-bg.mp4
+├── favicon.ico     # Browser icon
+├── index.html      # HTML entry point
+├── manifest.json   # PWA manifest
+└── robots.txt      # SEO directives
 ```
 
-## Image Organization
+## Asset Organization
 
-The project follows these guidelines for image organization:
+The project follows these guidelines for asset organization:
 
-- **src/assets/images/**: For images that are:
+- **src/assets/**: For assets that are:
   - Imported directly into components
   - Need webpack processing and optimization
-  - Smaller in size (< 100KB)
   - Used frequently across components
+  - Examples:
+    - Small images (< 100KB)
+    - Videos
+    - SVG icons
+    - Component-specific assets
 
-- **public/images/**: For:
-  - Large image files (> 1MB)
-  - Images loaded dynamically
-  - Images that don't need processing
-  - Static assets referenced by absolute paths
+- **public/**: For:
+  - Required web files (index.html, favicon.ico, manifest.json)
+  - Large static files (> 1MB)
+  - Files that need direct URL access
+  - Files that don't need processing
 
 ## Getting Started
 
