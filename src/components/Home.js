@@ -1,150 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import ColorPicker from './features/ColorPicker/ColorPicker';
-
-const SERVICES = [
-  {
-    title: 'Interior Painting',
-    description: 'Professional interior painting services for homes and businesses',
-    image: '/images/interior-service.png',
-    features: [
-      'Wall preparation and repairs',
-      'Premium paint selection',
-      'Clean and precise execution',
-      'Furniture protection',
-      'Post-painting cleanup'
-    ]
-  },
-  {
-    title: 'Exterior Painting',
-    description: 'Expert exterior painting to protect and beautify your property',
-    image: '/images/exterior-service.png',
-    features: [
-      'Surface preparation',
-      'Weather-resistant paints',
-      'Complete exterior coverage',
-      'Property protection',
-      'Long-lasting finish'
-    ]
-  },
-  {
-    title: 'Commercial Painting',
-    description: 'Large-scale painting solutions for commercial properties',
-    image: '/images/commercial-service.png',
-    features: [
-      'Minimal business disruption',
-      'Schedule flexibility',
-      'Safety compliance',
-      'Project management',
-      'Quality assurance'
-    ]
-  }
-];
-
-const PAINT_TYPES = [
-  {
-    name: 'Interior Paints',
-    description: 'Premium quality paints for indoor spaces',
-    features: ['Low VOC', 'Easy application', 'Excellent coverage', 'Washable finish']
-  },
-  {
-    name: 'Exterior Paints',
-    description: 'Durable paints for outdoor protection',
-    features: ['Weather resistant', 'UV protection', 'Long-lasting', 'Color retention']
-  },
-  {
-    name: 'Specialty Finishes',
-    description: 'Unique finishes for special applications',
-    features: ['Textured options', 'Metallic finishes', 'Anti-bacterial', 'High durability']
-  }
-];
-
-const TESTIMONIALS = [
-  {
-    id: 1,
-    name: 'Rajesh Kumar',
-    location: 'Contractor, Indore',
-    image: '/images/testimonial-1.png',
-    text: 'The team at FloridPaints transformed our home completely. Their attention to detail and professional approach made the entire process smooth and hassle-free. The quality of paint and workmanship is exceptional!',
-    rating: 5
-  },
-  {
-    id: 2,
-    name: 'Priya Sharma',
-    location: 'Home Owner, Indore',
-    image: '/images/testimonial-2.png',
-    text: 'I was amazed by the color selection process. Their color expert helped me choose the perfect shade for each room. The paint quality is superb, and the finish looks absolutely stunning. Highly recommended!',
-    rating: 5
-  },
-  {
-    id: 3,
-    name: 'Amit Patel',
-    location: 'VP, Financial Services, Indore',
-    image: '/images/testimonial-3.png',
-    text: 'Outstanding service from start to finish! The team was punctual, professional, and the results exceeded our expectations. Our office looks brand new with the fresh paint job.',
-    rating: 5
-  },
-  {
-    id: 4,
-    name: 'Anubha Seth',
-    location: 'Business Owner, Indore',
-    image: '/images/testimonial-4.png',
-    text: 'The durability of the paint is impressive. Even after a year, the colors look as fresh as day one. Their expertise in color combinations really helped us create the perfect ambiance.',
-    rating: 5
-  }
-];
-
-const ServiceCard = ({ service }) => (
-  <div className="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-102 hover:shadow-xl">
-    <div className="aspect-w-16 aspect-h-9">
-      <img 
-        src={service.image} 
-        alt={service.title}
-        className="w-full h-64 object-cover hover:scale-105 transition-transform duration-700"
-      />
-    </div>
-    <div className="p-8">
-      <h3 className="text-2xl font-bold text-gray-900 mb-4">{service.title}</h3>
-      <p className="text-gray-600 mb-6">{service.description}</p>
-      <ul className="space-y-3">
-        {service.features.map((feature, index) => (
-          <li key={index} className="flex items-center text-gray-600 hover-lift">
-            <svg className="h-5 w-5 text-primary-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-            </svg>
-            {feature}
-          </li>
-        ))}
-      </ul>
-    </div>
-  </div>
-);
-
-const PaintTypeCard = ({ type }) => (
-  <div className="bg-white rounded-xl shadow-lg p-8 transform transition-all duration-300 hover:scale-102 hover:shadow-xl">
-    <h3 className="text-xl font-semibold text-gray-900 mb-4">{type.name}</h3>
-    <p className="text-gray-600 mb-6">{type.description}</p>
-    <ul className="space-y-3">
-      {type.features.map((feature, index) => (
-        <li key={index} className="flex items-center text-gray-600 text-sm hover-lift">
-          <span className="w-2 h-2 bg-primary-500 rounded-full mr-3"></span>
-          {feature}
-        </li>
-      ))}
-    </ul>
-  </div>
-);
+import ServiceCard from './ui/ServiceCard';
+import PaintTypeCard from './ui/PaintTypeCard';
+import { SERVICES, PAINT_TYPES, TESTIMONIALS } from '../constants/data';
 
 const Home = () => {
   const [currentPair, setCurrentPair] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    projectType: '',
-    details: ''
-  });
-  const [formErrors, setFormErrors] = useState({});
 
   useEffect(() => {
     if (!isAutoPlaying) return;
@@ -166,58 +28,9 @@ const Home = () => {
     setIsAutoPlaying(false);
   };
 
-  const validateForm = () => {
-    const errors = {};
-    const phoneRegex = /^[0-9]{10}$/;
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!formData.name.trim()) {
-      errors.name = 'Name is required';
-    }
-
-    if (!formData.email.trim()) {
-      errors.email = 'Email is required';
-    } else if (!emailRegex.test(formData.email)) {
-      errors.email = 'Please enter a valid email';
-    }
-
-    if (!formData.phone.trim()) {
-      errors.phone = 'Phone number is required';
-    } else if (!phoneRegex.test(formData.phone.replace(/[^0-9]/g, ''))) {
-      errors.phone = 'Please enter a valid 10-digit phone number';
-    }
-
-    if (!formData.details.trim()) {
-      errors.details = 'Project details are required';
-    }
-
-    return errors;
-  };
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-    // Clear error when user starts typing
-    if (formErrors[name]) {
-      setFormErrors(prev => ({
-        ...prev,
-        [name]: ''
-      }));
-    }
-  };
-
   const handleGetQuote = (e) => {
     e.preventDefault();
-    const errors = validateForm();
-    if (Object.keys(errors).length === 0) {
-      console.log('Form submitted', formData);
-      // Here you would typically send the data to your backend
-    } else {
-      setFormErrors(errors);
-    }
+    console.log('Form submitted');
   };
 
   return (
@@ -441,79 +254,44 @@ const Home = () => {
                   <div className="relative group">
                     <input
                       type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
                       placeholder=" "
-                      className={`w-full px-5 py-4 bg-gray-800/50 rounded-xl text-white border ${
-                        formErrors.name ? 'border-red-500' : 'border-gray-600'
-                      } focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20
-                      transition-all duration-300 placeholder-shown:border-gray-700 peer`}
+                      required
+                      className="w-full px-5 py-4 bg-gray-800/50 rounded-xl text-white border border-gray-600
+                               focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20
+                               transition-all duration-300 placeholder-shown:border-gray-700 peer"
                     />
                     <label className="absolute left-5 top-4 text-gray-400 transition-all duration-300
                                     peer-focus:-translate-y-7 peer-focus:text-sm peer-focus:text-primary-400
                                     peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:text-sm">
                       Your Name
                     </label>
-                    {formErrors.name && (
-                      <span className="text-red-500 text-xs mt-1">{formErrors.name}</span>
-                    )}
                   </div>
                   <div className="relative group">
                     <input
                       type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
                       placeholder=" "
-                      className={`w-full px-5 py-4 bg-gray-800/50 rounded-xl text-white border ${
-                        formErrors.email ? 'border-red-500' : 'border-gray-600'
-                      } focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20
-                      transition-all duration-300 placeholder-shown:border-gray-700 peer`}
+                      required
+                      className="w-full px-5 py-4 bg-gray-800/50 rounded-xl text-white border border-gray-600
+                               focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20
+                               transition-all duration-300 placeholder-shown:border-gray-700 peer"
                     />
                     <label className="absolute left-5 top-4 text-gray-400 transition-all duration-300
                                     peer-focus:-translate-y-7 peer-focus:text-sm peer-focus:text-primary-400
                                     peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:text-sm">
                       Email Address
                     </label>
-                    {formErrors.email && (
-                      <span className="text-red-500 text-xs mt-1">{formErrors.email}</span>
-                    )}
                   </div>
                 </div>
 
                 <div className="relative group">
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    placeholder=" "
-                    className={`w-full px-5 py-4 bg-gray-800/50 rounded-xl text-white border ${
-                      formErrors.phone ? 'border-red-500' : 'border-gray-600'
-                    } focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20
-                    transition-all duration-300 placeholder-shown:border-gray-700 peer`}
-                  />
-                  <label className="absolute left-5 top-4 text-gray-400 transition-all duration-300
-                                  peer-focus:-translate-y-7 peer-focus:text-sm peer-focus:text-primary-400
-                                  peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:text-sm">
-                    Phone Number
-                  </label>
-                  {formErrors.phone && (
-                    <span className="text-red-500 text-xs mt-1">{formErrors.phone}</span>
-                  )}
-                </div>
-
-                <div className="relative group">
                   <select
-                    name="projectType"
-                    value={formData.projectType}
-                    onChange={handleInputChange}
+                    required
+                    defaultValue=""
                     className="w-full px-5 py-4 bg-gray-800/50 rounded-xl text-white border border-gray-600
                              focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20
                              transition-all duration-300 appearance-none cursor-pointer"
                   >
-                    <option value="">Select Project Type (Optional)</option>
+                    <option value="" disabled>Select Project Type</option>
                     <option value="interior">Interior Painting</option>
                     <option value="exterior">Exterior Painting</option>
                     <option value="commercial">Commercial Painting</option>
@@ -528,24 +306,18 @@ const Home = () => {
 
                 <div className="relative group">
                   <textarea
-                    name="details"
-                    value={formData.details}
-                    onChange={handleInputChange}
                     rows="4"
                     placeholder=" "
-                    className={`w-full px-5 py-4 bg-gray-800/50 rounded-xl text-white border ${
-                      formErrors.details ? 'border-red-500' : 'border-gray-600'
-                    } focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20
-                    transition-all duration-300 placeholder-shown:border-gray-700 peer resize-none`}
+                    required
+                    className="w-full px-5 py-4 bg-gray-800/50 rounded-xl text-white border border-gray-600
+                             focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20
+                             transition-all duration-300 placeholder-shown:border-gray-700 peer resize-none"
                   ></textarea>
                   <label className="absolute left-5 top-4 text-gray-400 transition-all duration-300
                                   peer-focus:-translate-y-7 peer-focus:text-sm peer-focus:text-primary-400
                                   peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:text-sm">
                     Project Details
                   </label>
-                  {formErrors.details && (
-                    <span className="text-red-500 text-xs mt-1">{formErrors.details}</span>
-                  )}
                 </div>
 
                 <button
