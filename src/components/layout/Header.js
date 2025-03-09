@@ -33,19 +33,19 @@ const Header = () => {
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="flex items-center space-x-2 focus:outline-none"
           >
-            <span className={`text-2xl font-extrabold font-['Poppins'] ${
+            <span className={`text-3xl font-extrabold font-['Poppins'] ${
               isScrolled ? 'text-primary-600' : 'text-white'
             }`}>
               Florid<span className="text-primary-500">Paints</span>
-              <span className="text-sm font-normal">.in</span>
+              <span className="text-base font-normal">.in</span>
             </span>
           </button>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex items-center space-x-8">
             <button 
               onClick={() => scrollToSection('services')}
-              className={`text-sm font-medium tracking-wide hover:text-primary-500 transition-colors ${
+              className={`text-base font-medium tracking-wide hover:text-primary-500 transition-colors ${
                 isScrolled ? 'text-gray-600' : 'text-white'
               }`}
             >
@@ -53,7 +53,7 @@ const Header = () => {
             </button>
             <button 
               onClick={() => scrollToSection('paint-selection')}
-              className={`text-sm font-medium tracking-wide hover:text-primary-500 transition-colors ${
+              className={`text-base font-medium tracking-wide hover:text-primary-500 transition-colors ${
                 isScrolled ? 'text-gray-600' : 'text-white'
               }`}
             >
@@ -61,7 +61,7 @@ const Header = () => {
             </button>
             <button 
               onClick={() => scrollToSection('testimonials')}
-              className={`text-sm font-medium tracking-wide hover:text-primary-500 transition-colors ${
+              className={`text-base font-medium tracking-wide hover:text-primary-500 transition-colors ${
                 isScrolled ? 'text-gray-600' : 'text-white'
               }`}
             >
@@ -69,11 +69,11 @@ const Header = () => {
             </button>
             <a 
               href="tel:+919876543210"
-              className={`flex items-center gap-2 text-sm font-medium hover:text-primary-500 transition-colors ${
+              className={`flex items-center gap-2 text-base font-medium hover:text-primary-500 transition-colors ${
                 isScrolled ? 'text-gray-600' : 'text-white'
               }`}
             >
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
                       d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
@@ -81,7 +81,7 @@ const Header = () => {
             </a>
             <button 
               onClick={() => scrollToSection('contact')}
-              className={`px-4 py-2 rounded-full text-sm font-medium 
+              className={`px-6 py-2.5 rounded-full text-base font-medium 
                 ${isScrolled 
                   ? 'bg-primary-600 text-white hover:bg-primary-700' 
                   : 'border-2 border-white text-white hover:bg-white hover:text-gray-900'
@@ -97,7 +97,7 @@ const Header = () => {
             className="md:hidden focus:outline-none"
           >
             <svg 
-              className={`w-6 h-6 ${isScrolled ? 'text-gray-600' : 'text-white'}`}
+              className={`w-7 h-7 ${isScrolled ? 'text-gray-600' : 'text-white'}`}
               fill="none" 
               viewBox="0 0 24 24" 
               stroke="currentColor"
@@ -117,38 +117,38 @@ const Header = () => {
             <div className="flex flex-col space-y-4">
               <button
                 onClick={() => scrollToSection('services')}
-                className="text-gray-600 text-sm font-medium hover:text-primary-500 text-left"
+                className="text-gray-600 text-base font-medium hover:text-primary-500 text-left"
               >
                 Services
               </button>
               <button
                 onClick={() => scrollToSection('paint-selection')}
-                className="text-gray-600 text-sm font-medium hover:text-primary-500 text-left"
+                className="text-gray-600 text-base font-medium hover:text-primary-500 text-left"
               >
                 Colors & Paints
               </button>
               <button
                 onClick={() => scrollToSection('testimonials')}
-                className="text-gray-600 text-sm font-medium hover:text-primary-500 text-left"
+                className="text-gray-600 text-base font-medium hover:text-primary-500 text-left"
               >
                 Testimonials
               </button>
               <a
                 href="tel:+919876543210"
-                className="flex items-center gap-2 text-gray-600 text-sm font-medium hover:text-primary-500 text-left"
+                className="flex items-center gap-2 text-gray-600 text-base font-medium hover:text-primary-500 text-left"
               >
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
                         d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
                 <span className="flex flex-col">
-                  <span className="text-xs text-gray-500">Quick Connect</span>
+                  <span className="text-sm text-gray-500">Quick Connect</span>
                   <span>+91 98765 43210</span>
                 </span>
               </a>
               <button
                 onClick={() => scrollToSection('contact')}
-                className="bg-primary-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-primary-700 text-center"
+                className="bg-primary-600 text-white px-6 py-2.5 rounded-full text-base font-medium hover:bg-primary-700 text-center"
               >
                 Get Quote
               </button>
