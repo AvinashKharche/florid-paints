@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { TESTIMONIALS } from '../../constants/data';
+import defaultAvatar from '../../assets/images/testimonials/default-avatar.png';
 
 const TestimonialsSection = () => {
   const [currentPair, setCurrentPair] = useState(0);
@@ -92,7 +93,7 @@ const TestimonialsSection = () => {
                             className="w-16 h-16 rounded-full object-cover bg-gray-200"
                             onError={(e) => {
                               e.target.onerror = null;
-                              e.target.src = '/images/testimonials/default-avatar.png';
+                              e.target.src = defaultAvatar;
                             }}
                           />
                           <div className="absolute -bottom-2 -right-2 bg-primary-500 text-white p-1 rounded-full">
