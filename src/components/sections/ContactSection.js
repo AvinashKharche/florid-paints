@@ -141,7 +141,6 @@ const ContactSection = () => {
               label="Phone Number"
               error={formErrors.phone}
               required
-              placeholder="e.g., 123-456-7890"
             />
 
             <FormSelect
