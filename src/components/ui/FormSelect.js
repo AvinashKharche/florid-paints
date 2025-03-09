@@ -31,14 +31,10 @@ const FormSelect = ({
         ))}
       </select>
       <label 
-        className={`absolute text-gray-400 duration-300 transform -translate-y-3
-                   top-5 left-5 z-10 origin-[0] peer-focus:text-primary-400
-                   peer-placeholder-shown:scale-100 
-                   peer-placeholder-shown:translate-y-0
-                   peer-focus:scale-75
-                   peer-focus:-translate-y-4
-                   ${value ? 'scale-75 -translate-y-4' : ''}
-                   ${error ? 'text-red-500' : 'text-gray-400'}`}
+        className={`absolute text-gray-400 duration-300 transform
+                   left-5 z-10 origin-[0] peer-focus:text-primary-400
+                   ${value ? 'text-xs top-3' : 'text-base top-[18px]'}
+                   ${error ? 'text-red-500' : value ? 'text-primary-400' : 'text-gray-400'}`}
       >
         {label}
       </label>
