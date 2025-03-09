@@ -123,23 +123,23 @@ const ContactSection = () => {
                 required
               />
               <FormInput
-                type="email"
-                name="email"
-                value={formData.email}
+                type="tel"
+                name="phone"
+                value={formData.phone}
                 onChange={handleInputChange}
-                label="Email Address"
-                error={formErrors.email}
+                label="Phone Number"
+                error={formErrors.phone}
                 required
               />
             </div>
 
             <FormInput
-              type="tel"
-              name="phone"
-              value={formData.phone}
+              type="email"
+              name="email"
+              value={formData.email}
               onChange={handleInputChange}
-              label="Phone Number"
-              error={formErrors.phone}
+              label="Email Address"
+              error={formErrors.email}
               required
             />
 
