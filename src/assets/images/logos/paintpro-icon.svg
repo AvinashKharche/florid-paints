@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle -->
+  <circle cx="256" cy="256" r="256" fill="#4F46E5"/>
+  
+  <!-- Paint Brush -->
+  <path d="M352 160C352 160 384 192 384 224C384 256 352 288 352 288L160 480H96L128 416L352 160Z" 
+        fill="white" stroke="white" stroke-width="16" stroke-linejoin="round"/>
+  
+  <!-- Paint Drip -->
+  <path d="M256 96C256 96 288 128 288 160C288 192 256 224 256 224L192 288L160 256L256 96Z" 
+        fill="#A5B4FC" stroke="#A5B4FC" stroke-width="16" stroke-linejoin="round"/>
+  
+  <!-- Paint Splash -->
+  <circle cx="224" cy="128" r="32" fill="white" opacity="0.6"/>
+  <circle cx="320" cy="192" r="24" fill="white" opacity="0.4"/>
+</svg> 
