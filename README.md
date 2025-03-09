@@ -33,12 +33,11 @@ A modern web application for a professional painting service company, built with
 ```
 src/
 ├── assets/           # Static assets
-│   ├── images/       # Images imported in components
-│   │   ├── logos/    # Brand and partner logos
-│   │   ├── services/ # Service-related images
-│   │   ├── backgrounds/ # Background images
-│   │   └── icons/    # Custom icons
-│   └── videos/       # Video assets
+│   └── images/       # Images imported in components
+│       ├── logos/    # Brand and partner logos
+│       ├── services/ # Service-related images
+│       ├── backgrounds/ # Background images
+│       └── icons/    # Custom icons
 ├── components/
 │   ├── features/     # Feature-specific components
 │   │   └── ColorPicker/
@@ -67,10 +66,12 @@ src/
     └── data.js
 
 public/             # Static files served directly
-├── images/         # Large, static images
+├── images/         # Large, static images (> 1MB)
 │   ├── interior-service.png
 │   ├── exterior-service.png
 │   └── commercial-service.png
+├── videos/         # Video assets
+│   └── hero-bg.mp4 # Background video (4MB)
 ├── favicon.ico     # Browser icon
 ├── index.html      # HTML entry point
 ├── manifest.json   # PWA manifest
@@ -82,20 +83,36 @@ public/             # Static files served directly
 The project follows these guidelines for asset organization:
 
 - **src/assets/**: For assets that are:
-  - Imported directly into components
+  - Imported directly into components using `import`
   - Need webpack processing and optimization
-  - Used frequently across components
+  - Small in size (< 1MB)
   - Examples:
-    - Small images (< 100KB)
-    - Videos
+    - UI images (< 100KB)
     - SVG icons
-    - Component-specific assets
+    - Small component assets
+    - Frequently reused images
 
 - **public/**: For:
   - Required web files (index.html, favicon.ico, manifest.json)
-  - Large static files (> 1MB)
+  - Large media files (> 1MB)
+    - Videos
+    - High-resolution images
+    - Background videos
   - Files that need direct URL access
-  - Files that don't need processing
+  - Assets that don't need processing
+  - Files referenced using absolute paths
+
+### Size Guidelines
+
+- **Small Assets (src/assets/)**: < 1MB
+  - UI elements: < 100KB
+  - Icons and logos: < 50KB
+  - Thumbnail images: < 200KB
+
+- **Large Assets (public/)**: > 1MB
+  - Videos: > 1MB
+  - High-resolution images: > 1MB
+  - Background media: > 1MB
 
 ## Getting Started
 
