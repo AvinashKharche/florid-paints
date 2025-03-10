@@ -116,7 +116,9 @@ const TestimonialsSection = () => {
                           <p className="text-gray-500 text-sm">{testimonial.location}</p>
                         </div>
                       </div>
-                      <p className="text-gray-600 leading-relaxed mb-6 italic line-clamp-4">"{testimonial.text}"</p>
+                      <p className="text-gray-600 leading-relaxed mb-6 italic line-clamp-4">
+                        &ldquo;{testimonial.text}&rdquo;
+                      </p>
                       <div className="flex items-center justify-end">
                         <button 
                           className="text-primary-500 hover:text-primary-600 font-medium text-sm flex items-center gap-1 group transition-colors"

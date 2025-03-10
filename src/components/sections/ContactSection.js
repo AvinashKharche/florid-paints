@@ -40,10 +40,9 @@ const ContactSection = () => {
       errors.email = 'Please enter a valid email';
     }
 
-    const phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$/;
-    if (!formData.phone.trim()) {
+    if (!formData.phone) {
       errors.phone = 'Phone number is required';
-    } else if (!phoneRegex.test(formData.phone.trim())) {
+    } else if (!/^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4}$/.test(formData.phone)) {
       errors.phone = 'Please enter a valid phone number';
     }
 
