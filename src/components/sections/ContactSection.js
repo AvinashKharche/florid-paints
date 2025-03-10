@@ -73,38 +73,67 @@ const ContactSection = () => {
 
   const handleGetQuote = async (e) => {
     e.preventDefault();
-    const errors = validateForm();
     
-    if (Object.keys(errors).length === 0) {
-      setIsSubmitting(true);
-      try {
-        // Create a FormData object for Netlify
-        const formDataToSend = new FormData(e.target);
-        
-        // Send the form data to Netlify
-        await fetch('/', {
-          method: 'POST',
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: new URLSearchParams(formDataToSend).toString()
-        });
-        
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          projectType: '',
-          details: ''
-        });
-        showToast('Quote request submitted successfully! We\'ll get back to you soon.', 'success');
-      } catch (error) {
-        console.error('Error submitting form:', error);
-        showToast('Failed to submit quote request. Please try again.', 'error');
-      } finally {
-        setIsSubmitting(false);
+    // Validate form fields
+    if (!formData.name.trim()) {
+      toast.error('Please enter your name');
+      return;
+    } else if (!formData.email.trim()) {
+      toast.error('Please enter your email');
+      return;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      toast.error('Please enter a valid email address');
+      return;
+    } else if (!formData.phone.trim()) {
+      toast.error('Please enter your phone number');
+      return;
+    } else if (!/^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4}$/.test(formData.phone)) {
+      toast.error('Please enter a valid phone number');
+      return;
+    } else if (!formData.projectType) {
+      toast.error('Please select a project type');
+      return;
+    } else if (!formData.details.trim()) {
+      toast.error('Please provide project details');
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // Create FormData object for Netlify
+      const formDataToSend = new FormData();
+      formDataToSend.append('form-name', 'contact');
+      Object.keys(formData).forEach(key => {
+        formDataToSend.append(key, formData[key]);
+      });
+
+      // Submit to Netlify
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formDataToSend).toString()
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
       }
-    } else {
-      setFormErrors(errors);
-      showToast('Please fix the errors in the form.', 'error');
+
+      // Clear form
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        projectType: '',
+        details: ''
+      });
+
+      toast.success('Thank you! We will contact you soon.');
+    } catch (error) {
+      console.error('Form submission error:', error);
+      toast.error('Failed to submit form. Please try again.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
