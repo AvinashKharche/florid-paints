@@ -78,9 +78,15 @@ const ContactSection = () => {
     if (Object.keys(errors).length === 0) {
       setIsSubmitting(true);
       try {
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        console.log('Form submitted:', formData);
+        // Create a FormData object for Netlify
+        const formDataToSend = new FormData(e.target);
+        
+        // Send the form data to Netlify
+        await fetch('/', {
+          method: 'POST',
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams(formDataToSend).toString()
+        });
         
         setFormData({
           name: '',
@@ -111,7 +117,20 @@ const ContactSection = () => {
     >
       <div className="max-w-3xl mx-auto">
         <div className="bg-gray-800/50 backdrop-blur-lg rounded-2xl p-8 shadow-xl animate-fade-in">
-          <form onSubmit={handleGetQuote} className="space-y-8">
+          <form 
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+            onSubmit={handleGetQuote} 
+            className="space-y-8"
+          >
+            {/* Netlify Form Requirements */}
+            <input type="hidden" name="form-name" value="contact" />
+            <div hidden>
+              <input name="bot-field" />
+            </div>
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <FormInput
                 name="name"
