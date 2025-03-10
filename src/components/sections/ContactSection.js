@@ -26,33 +26,6 @@ const ContactSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [toast, setToast] = useState(null);
 
-  const validateForm = () => {
-    const errors = {};
-    
-    if (!formData.name.trim()) {
-      errors.name = 'Name is required';
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!formData.email.trim()) {
-      errors.email = 'Email is required';
-    } else if (!emailRegex.test(formData.email)) {
-      errors.email = 'Please enter a valid email';
-    }
-
-    if (!formData.phone) {
-      errors.phone = 'Phone number is required';
-    } else if (!/^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4}$/.test(formData.phone)) {
-      errors.phone = 'Please enter a valid phone number';
-    }
-
-    if (!formData.details.trim()) {
-      errors.details = 'Please provide project details';
-    }
-
-    return errors;
-  };
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -67,34 +40,30 @@ const ContactSection = () => {
     }
   };
 
-  const showToast = (message, type) => {
-    setToast({ message, type });
-  };
-
   const handleGetQuote = async (e) => {
     e.preventDefault();
     
     // Validate form fields
     if (!formData.name.trim()) {
-      toast.error('Please enter your name');
+      setToast({ message: 'Please enter your name', type: 'error' });
       return;
     } else if (!formData.email.trim()) {
-      toast.error('Please enter your email');
+      setToast({ message: 'Please enter your email', type: 'error' });
       return;
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      toast.error('Please enter a valid email address');
+      setToast({ message: 'Please enter a valid email address', type: 'error' });
       return;
     } else if (!formData.phone.trim()) {
-      toast.error('Please enter your phone number');
+      setToast({ message: 'Please enter your phone number', type: 'error' });
       return;
     } else if (!/^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4}$/.test(formData.phone)) {
-      toast.error('Please enter a valid phone number');
+      setToast({ message: 'Please enter a valid phone number', type: 'error' });
       return;
     } else if (!formData.projectType) {
-      toast.error('Please select a project type');
+      setToast({ message: 'Please select a project type', type: 'error' });
       return;
     } else if (!formData.details.trim()) {
-      toast.error('Please provide project details');
+      setToast({ message: 'Please provide project details', type: 'error' });
       return;
     }
 
@@ -128,10 +97,10 @@ const ContactSection = () => {
         details: ''
       });
 
-      toast.success('Thank you! We will contact you soon.');
+      setToast({ message: 'Thank you! We will contact you soon.', type: 'success' });
     } catch (error) {
       console.error('Form submission error:', error);
-      toast.error('Failed to submit form. Please try again.');
+      setToast({ message: 'Failed to submit form. Please try again.', type: 'error' });
     } finally {
       setIsSubmitting(false);
     }
