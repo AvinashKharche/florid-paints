@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { TESTIMONIALS } from '../../constants/data';
-import defaultAvatar from '../../assets/images/testimonials/default-avatar.png';
 
 const TestimonialsSection = () => {
   const [currentPair, setCurrentPair] = useState(0);
@@ -90,11 +89,7 @@ const TestimonialsSection = () => {
                           <img
                             src={testimonial.image}
                             alt={testimonial.name}
-                            className="w-16 h-16 rounded-full object-cover bg-gray-200"
-                            onError={(e) => {
-                              e.target.onerror = null;
-                              e.target.src = defaultAvatar;
-                            }}
+                            className="w-16 h-16 rounded-full object-cover"
                           />
                           <div className="absolute -bottom-2 -right-2 bg-primary-500 text-white p-1 rounded-full">
                             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">

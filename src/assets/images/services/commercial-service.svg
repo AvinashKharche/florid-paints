@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#F3F4F6"/>
+  
+  <!-- Building Shape -->
+  <rect x="150" y="100" width="500" height="400" fill="white" stroke="#4B5563" stroke-width="8"/>
+  
+  <!-- Windows Grid -->
+  <path d="M200 150H600M200 250H600M200 350H600M200 450H600" stroke="#DBEAFE" stroke-width="8"/>
+  <path d="M200 150V450M300 150V450M400 150V450M500 150V450M600 150V450" stroke="#DBEAFE" stroke-width="8"/>
+  
+  <!-- Paint Roller -->
+  <rect x="50" y="200" width="50" height="200" fill="#93C5FD" stroke="#2563EB" stroke-width="8"/>
+  <path d="M75 200V150" stroke="#4B5563" stroke-width="8"/>
+  <rect x="45" y="120" width="60" height="30" fill="#4B5563"/>
+  
+  <!-- Paint Splash -->
+  <circle cx="700" cy="300" r="50" fill="#93C5FD" opacity="0.6"/>
+  <circle cx="720" cy="320" r="30" fill="#93C5FD" opacity="0.4"/>
+</svg> 

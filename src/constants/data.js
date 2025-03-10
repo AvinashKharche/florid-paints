@@ -1,15 +1,19 @@
+// Import service images
+import interiorService from '../assets/images/services/interior-service.png';
+import exteriorService from '../assets/images/services/exterior-service.png';
+import commercialService from '../assets/images/services/commercial-service.png';
+
 // Import testimonial images
 import testimonial1 from '../assets/images/testimonials/testimonial-1.png';
 import testimonial2 from '../assets/images/testimonials/testimonial-2.png';
 import testimonial3 from '../assets/images/testimonials/testimonial-3.png';
 import testimonial4 from '../assets/images/testimonials/testimonial-4.png';
-import defaultAvatar from '../assets/images/testimonials/default-avatar.png';
 
 export const SERVICES = [
   {
     title: 'Interior Painting',
     description: 'Professional interior painting services for homes and businesses',
-    image: '/images/interior-service.png',
+    image: interiorService,
     features: [
       'Wall preparation and repairs',
       'Premium paint selection',
@@ -21,7 +25,7 @@ export const SERVICES = [
   {
     title: 'Exterior Painting',
     description: 'Expert exterior painting to protect and beautify your property',
-    image: '/images/exterior-service.png',
+    image: exteriorService,
     features: [
       'Surface preparation',
       'Weather-resistant paints',
@@ -33,7 +37,7 @@ export const SERVICES = [
   {
     title: 'Commercial Painting',
     description: 'Large-scale painting solutions for commercial properties',
-    image: '/images/commercial-service.png',
+    image: commercialService,
     features: [
       'Minimal business disruption',
       'Schedule flexibility',
