@@ -72,6 +72,14 @@ const ColorPicker = () => {
     setSelectedColor(COLOR_COLLECTIONS[categoryId][0].hex);
   };
 
+  // Get colors based on screen size
+  const displayColors = (colors) => {
+    if (typeof window !== 'undefined' && window.innerWidth < 1024) {
+      return colors.slice(0, 4);
+    }
+    return colors;
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="text-center mb-12">
@@ -89,7 +97,7 @@ const ColorPicker = () => {
               <button
                 key={category.id}
                 className={`
-                  px-6 py-2.5 rounded-full font-medium text-sm transition-all duration-300
+                  px-4 sm:px-6 py-2 sm:py-2.5 rounded-full font-medium text-sm transition-all duration-300
                   ${selectedCategory === category.id
                     ? 'bg-white text-gray-900 shadow-sm'
                     : 'text-gray-600 hover:text-gray-900'}
@@ -102,14 +110,30 @@ const ColorPicker = () => {
           </div>
         </div>
 
+        {/* Mobile Color Preview */}
+        <div className="block lg:hidden bg-white rounded-xl shadow-sm border border-gray-100 p-4">
+          <div className="flex items-center space-x-4">
+            <div
+              className="w-16 h-16 rounded-lg shadow-inner transition-colors duration-500"
+              style={{ backgroundColor: selectedColor }}
+            />
+            <div className="flex-1">
+              <h3 className="font-medium text-gray-900 mb-1">Selected Color</h3>
+              <span className="font-mono text-sm bg-gray-100 px-2 py-1 rounded-full">
+                {selectedColor}
+              </span>
+            </div>
+          </div>
+        </div>
+
         {/* Color Display */}
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
           <div className="lg:col-span-2">
-            <h3 className="text-2xl font-semibold text-gray-900 mb-8">
+            <h3 className="text-2xl font-semibold text-gray-900 mb-4 sm:mb-8">
               {COLOR_CATEGORIES.find(cat => cat.id === selectedCategory)?.name} Colors
             </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
-              {COLOR_COLLECTIONS[selectedCategory].map((color) => (
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6">
+              {displayColors(COLOR_COLLECTIONS[selectedCategory]).map((color) => (
                 <ColorSwatch
                   key={color.hex}
                   color={color.hex}
@@ -121,7 +145,8 @@ const ColorPicker = () => {
             </div>
           </div>
 
-          <div className="lg:col-span-2">
+          {/* Desktop Color Preview */}
+          <div className="hidden lg:block lg:col-span-2">
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
               <div className="mb-8">
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">Color Preview</h3>
@@ -158,7 +183,7 @@ const ColorPicker = () => {
                     <HexColorPicker
                       color={selectedColor}
                       onChange={setSelectedColor}
-                      className="w-full"
+                      className="w-full max-w-[280px] mx-auto"
                     />
                   </div>
                 )}
@@ -175,6 +200,36 @@ const ColorPicker = () => {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Mobile Actions */}
+        <div className="block lg:hidden space-y-4">
+          <button
+            className="w-full px-6 py-3 bg-white border border-gray-200 rounded-xl
+                     text-sm font-medium text-gray-700 hover:bg-gray-50 
+                     transition-all duration-300 hover:shadow-md"
+            onClick={() => setShowCustomPicker(!showCustomPicker)}
+          >
+            {showCustomPicker ? 'Hide Custom Picker' : 'Try Custom Color'}
+          </button>
+
+          {showCustomPicker && (
+            <div className="p-4 bg-gray-50 rounded-xl">
+              <HexColorPicker
+                color={selectedColor}
+                onChange={setSelectedColor}
+                className="w-full max-w-[280px] mx-auto"
+              />
+            </div>
+          )}
+
+          <button
+            onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
+            className="w-full px-6 py-3 bg-primary-600 text-white rounded-xl font-medium
+                     hover:bg-primary-700 transition-all duration-300 hover:shadow-lg"
+          >
+            Get Professional Advice
+          </button>
         </div>
       </div>
     </div>
