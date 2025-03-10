@@ -3,16 +3,18 @@ import React from 'react';
 const HeroSection = () => {
   return (
     <section id="hero" className="relative h-screen flex items-center justify-center bg-gray-900 text-white overflow-hidden">
-      <video 
-        autoPlay 
-        muted 
-        loop 
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover opacity-40"
-      >
-        <source src="/videos/hero-bg.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      <div className="absolute inset-0 overflow-hidden">
+        <video 
+          autoPlay 
+          muted 
+          loop 
+          playsInline
+          className="absolute h-full w-auto min-w-full min-h-full object-cover lg:object-center object-[70%] opacity-40"
+        >
+          <source src="/videos/hero-bg.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
       <div className="absolute inset-0 bg-gradient-overlay"></div>
       <div className="relative z-10 text-center max-w-4xl mx-auto px-4 animate-fade-in">
         <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight text-shadow">
