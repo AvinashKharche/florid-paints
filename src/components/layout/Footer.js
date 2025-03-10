@@ -158,7 +158,7 @@ const Footer = () => {
                         </svg>
                         <div>
                           <span className="block text-sm font-medium">Quick Connect</span>
-                          <span className="block text-base font-bold">+91 98765 43210</span>
+                          <span className="block text-base font-bold">+91 97554 77978</span>
                         </div>
                       </a>
                       <div className="flex flex-col space-y-2 mt-2">
