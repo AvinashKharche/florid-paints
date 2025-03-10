@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { TESTIMONIALS } from '../../constants/data';
 import defaultAvatar from '../../assets/images/testimonials/default-avatar.svg';
 
@@ -21,10 +21,25 @@ const TestimonialsSection = () => {
     testimonialPairs.push(TESTIMONIALS.slice(i, i + 2));
   }
 
-  const handleDotClick = (index) => {
+  const handleDotClick = useCallback((index) => {
     setCurrentPair(index);
     setIsAutoPlaying(false);
-  };
+  }, []);
+
+  const handlePrevClick = useCallback(() => {
+    setCurrentPair((prev) => (prev - 1 + testimonialPairs.length) % testimonialPairs.length);
+    setIsAutoPlaying(false);
+  }, [testimonialPairs.length]);
+
+  const handleNextClick = useCallback(() => {
+    setCurrentPair((prev) => (prev + 1) % testimonialPairs.length);
+    setIsAutoPlaying(false);
+  }, [testimonialPairs.length]);
+
+  const handleReadMore = useCallback((testimonialId) => {
+    // You can implement a modal or expand functionality here
+    console.log('Read more clicked for:', testimonialId);
+  }, []);
 
   return (
     <section id="testimonials" className="py-24 bg-gradient-to-b from-gray-50 to-white">
@@ -38,10 +53,7 @@ const TestimonialsSection = () => {
         <div className="relative">
           {/* Navigation Arrows */}
           <button
-            onClick={() => {
-              setCurrentPair((prev) => (prev - 1 + testimonialPairs.length) % testimonialPairs.length);
-              setIsAutoPlaying(false);
-            }}
+            onClick={handlePrevClick}
             className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-12
                      w-12 h-12 rounded-full bg-white/80 backdrop-blur-sm shadow-lg border border-gray-100
                      flex items-center justify-center text-gray-600
@@ -56,10 +68,7 @@ const TestimonialsSection = () => {
           </button>
           
           <button
-            onClick={() => {
-              setCurrentPair((prev) => (prev + 1) % testimonialPairs.length);
-              setIsAutoPlaying(false);
-            }}
+            onClick={handleNextClick}
             className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-12
                      w-12 h-12 rounded-full bg-white/80 backdrop-blur-sm shadow-lg border border-gray-100
                      flex items-center justify-center text-gray-600
@@ -111,10 +120,8 @@ const TestimonialsSection = () => {
                       <div className="flex items-center justify-end">
                         <button 
                           className="text-primary-500 hover:text-primary-600 font-medium text-sm flex items-center gap-1 group transition-colors"
-                          onClick={() => {
-                            // You can implement a modal or expand functionality here
-                            console.log('Read more clicked for:', testimonial.id);
-                          }}
+                          onClick={() => handleReadMore(testimonial.id)}
+                          aria-label={`Read more about ${testimonial.name}'s testimonial`}
                         >
                           Read More
                           <svg 
