@@ -37,7 +37,7 @@ const Header = () => {
               isScrolled ? 'text-primary-600' : 'text-white'
             }`}>
               Florid<span className="text-primary-500">Paints</span>
-              <span className="text-base font-normal">.in</span>
+              <span className="text-base font-normal">.com</span>
             </span>
           </button>
 
