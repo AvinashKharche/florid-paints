@@ -187,16 +187,16 @@ const Footer = () => {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                           </svg>
                           <div className="text-gray-300 text-sm">
-                            <p>123 Paint Street</p>
-                            <p>Mumbai, Maharashtra 400001</p>
+                            <p>Behind Hero Showroom, Kanadia</p>
+                            <p>Indore, Madhya Pradesh</p>
                           </div>
                         </div>
-                        <a href="mailto:info@floridpaints.in"
+                        <a href="mailto:info@floridpaints.com"
                            className="flex items-center space-x-3 text-gray-300 hover:text-primary-400 transition-colors">
                           <svg className="w-5 h-5 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                           </svg>
-                          <span className="text-sm">info@floridpaints.in</span>
+                          <span className="text-sm">info@floridpaints.com</span>
                         </a>
                       </div>
                     </div>
@@ -211,7 +211,7 @@ const Footer = () => {
         <div className="border-t border-gray-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm">
-              © {currentYear} FloridPaints.in. All rights reserved.
+              © {currentYear} FloridPaints.com. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <a href="/privacy" className="text-gray-400 hover:text-primary-400 text-sm transition-colors">
