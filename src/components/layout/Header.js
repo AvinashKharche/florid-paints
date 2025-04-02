@@ -39,6 +39,7 @@ const Header = () => {
             }`}>
               Florid<span className="text-primary-500">Paints</span>
               <span className="text-base font-normal">.com</span>
+              <span className="text-base font-normal">.com</span>
             </span>
           </button>
 
@@ -178,4 +179,3 @@ const Header = () => {
 };
 
 export default Header; 
-
