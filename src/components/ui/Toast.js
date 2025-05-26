@@ -29,13 +29,14 @@ const Toast = ({ message, type = 'success', onClose, duration = 3000 }) => {
   };
 
   const baseClasses = "fixed bottom-4 right-4 flex items-center gap-2 px-4 py-3 rounded-lg shadow-lg transform transition-all duration-300";
-  const typeClasses = {
-    success: "bg-green-500 text-white",
-    error: "bg-red-500 text-white"
+  const toastStyles = {
+    success: "bg-secondary-500 text-white",
+    error: "bg-red-500 text-white",
+    info: "bg-blue-500 text-white"
   };
 
   return (
-    <div className={`${baseClasses} ${typeClasses[type]}`}>
+    <div className={`${baseClasses} ${toastStyles[type]}`}>
       {getIcon()}
       <p className="font-medium">{message}</p>
       <button

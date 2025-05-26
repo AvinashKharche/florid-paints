@@ -26,8 +26,8 @@ const HeroSection = () => {
         <div className="flex flex-col sm:flex-row gap-6 justify-center">
           <button 
             onClick={() => document.getElementById('services').scrollIntoView({ behavior: 'smooth' })}
-            className="px-8 py-4 bg-primary-600 text-white rounded-full text-lg font-semibold 
-                     hover:bg-primary-700 transition-all duration-300 hover:shadow-lg hover-lift"
+            className="px-8 py-4 bg-secondary-500 text-white rounded-full text-lg font-semibold 
+                     hover:bg-secondary-600 transition-all duration-300 hover:shadow-lg hover-lift"
           >
             Our Services
           </button>

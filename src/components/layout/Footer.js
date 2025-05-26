@@ -1,4 +1,5 @@
 import React from 'react';
+import Logo from '../../assets/images/logos/Asset 1@8x.png';
 
 const Footer = () => {
   const scrollToSection = (sectionId) => {
@@ -19,11 +20,8 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-16">
           {/* Brand Section */}
           <div className="lg:col-span-5 h-full">
-            <div className="bg-gray-800/30 backdrop-blur-sm rounded-2xl p-8 h-full transform transition-all duration-300 hover:scale-[1.02] flex flex-col">
-              <h3 className="text-2xl font-extrabold font-['Poppins'] text-white mb-6">
-                Florid<span className="text-primary-500">Paints</span>
-                <span className="text-sm font-normal">.in</span>
-              </h3>
+            <div className="bg-gray-800/30 backdrop-blur-sm rounded-2xl p-8 h-full transform transition-all duration-300 hover:scale-[1.02] flex flex-col items-center">
+              <img src={Logo} alt="Florid Paints Logo" className="h-40 w-auto mb-6 mx-auto" />
               <div className="flex-grow mb-8">
                 <p className="text-gray-300 text-base leading-relaxed">
                   Transform your spaces with premium quality paints and professional painting services.
@@ -78,8 +76,9 @@ const Footer = () => {
                       </button>
                     </li>
                     <li>
-                      <button onClick={() => scrollToSection('paint-selection')}
-                              className="text-gray-300 hover:text-primary-400 text-sm transition-all duration-300 hover:translate-x-1 flex items-center space-x-2">
+                      <button
+                        onClick={() => scrollToSection('paint-selection')}
+                        className="text-gray-300 hover:text-primary-400 text-sm transition-all duration-300 hover:translate-x-1 flex items-center space-x-2">
                         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
@@ -87,10 +86,22 @@ const Footer = () => {
                       </button>
                     </li>
                     <li>
-                      <button onClick={() => scrollToSection('testimonials')}
-                              className="text-gray-300 hover:text-primary-400 text-sm transition-all duration-300 hover:translate-x-1 flex items-center space-x-2">
+                      <a
+                        href="/documents/florid-paints-price-list.pdf"
+                        download="Florid-Paints-Price-List.pdf"
+                        className="text-gray-300 hover:text-primary-400 text-sm transition-all duration-300 hover:translate-x-1 flex items-center space-x-2">
                         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                        <span>Price List</span>
+                      </a>
+                    </li>
+                    <li>
+                      <button
+                        onClick={() => scrollToSection('testimonials')}
+                        className="text-gray-300 hover:text-primary-400 text-sm transition-all duration-300 hover:translate-x-1 flex items-center space-x-2">
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
                         <span>Testimonials</span>
                       </button>

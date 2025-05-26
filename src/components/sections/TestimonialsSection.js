@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import SectionLayout from '../layout/SectionLayout';
 import { TESTIMONIALS } from '../../constants/data';
 import defaultAvatar from '../../assets/images/testimonials/default-avatar.svg';
 
@@ -42,15 +43,13 @@ const TestimonialsSection = () => {
   }, []);
 
   return (
-    <section id="testimonials" className="py-24 bg-gradient-to-b from-gray-50 to-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Customer Stories</h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Hear what our satisfied customers have to say about their experience
-          </p>
-        </div>
-        <div className="relative">
+    <SectionLayout
+      id="testimonials"
+      title="Customer Stories"
+      description="Hear what our satisfied customers have to say about their experience"
+      background="gradient"
+    >
+      <div className="relative">
           {/* Navigation Arrows */}
           <button
             onClick={handlePrevClick}
@@ -159,8 +158,7 @@ const TestimonialsSection = () => {
             ))}
           </div>
         </div>
-      </div>
-    </section>
+    </SectionLayout>
   );
 };
 

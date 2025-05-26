@@ -17,8 +17,8 @@ const Button = ({
   const baseClasses = 'inline-flex items-center justify-center font-semibold transition-all duration-300 rounded-xl focus:outline-none focus:ring-4';
   
   const variants = {
-    primary: 'bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500/20',
-    secondary: 'bg-gray-800/50 text-white hover:bg-gray-800/70 focus:ring-gray-500/20',
+    primary: 'bg-primary-500 text-white hover:bg-primary-600 focus:ring-primary-500/20',
+    secondary: 'bg-secondary-500 text-white hover:bg-secondary-600 focus:ring-secondary-500/20',
     outline: 'border-2 border-primary-500 text-primary-500 hover:bg-primary-500/10 focus:ring-primary-500/20'
   };
 

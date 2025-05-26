@@ -20,10 +20,10 @@ const SectionLayout = ({
   };
 
   return (
-    <section id={id} className={`py-24 ${backgrounds[background]} ${className}`}>
+    <section id={id} className={`py-16 ${backgrounds[background]} ${className}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {(title || description) && (
-          <div className="text-center mb-16 animate-fade-in">
+          <div className="text-center mb-12 animate-fade-in">
             {title && (
               <h2 className={`text-4xl font-bold mb-4 ${titleClassName}`}>
                 {title}

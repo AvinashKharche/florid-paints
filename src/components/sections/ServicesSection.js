@@ -29,6 +29,7 @@ const ServicesSection = () => {
           </div>
         ))}
       </div>
+
     </SectionLayout>
   );
 };

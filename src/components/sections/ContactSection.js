@@ -182,6 +182,7 @@ const ContactSection = () => {
               isLoading={isSubmitting}
               className="w-full"
               size="lg"
+              variant="primary"
             >
               {isSubmitting ? 'Submitting...' : 'Request Quote'}
             </Button>

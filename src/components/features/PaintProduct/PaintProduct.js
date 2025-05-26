@@ -81,7 +81,7 @@ const PaintProduct = ({
             <ul className="mt-2 grid grid-cols-2 gap-2">
               {features.map((feature, index) => (
                 <li key={index} className="flex items-center text-sm text-gray-600">
-                  <svg className="h-4 w-4 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="h-4 w-4 text-secondary-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                   {feature}
@@ -149,7 +149,7 @@ const PaintProduct = ({
             </div>
             <button
               onClick={handleAddToCart}
-              className="px-6 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 
+              className="px-6 py-2 bg-secondary-500 text-white rounded-md hover:bg-secondary-600 
                        transform hover:scale-105 transition-all duration-200"
             >
               Add to Cart
