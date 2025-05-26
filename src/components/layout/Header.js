@@ -34,12 +34,7 @@ const Header = () => {
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="flex items-center space-x-2 focus:outline-none"
           >
-            <span className={`text-3xl font-extrabold font-['Poppins'] ${
-              isScrolled ? 'text-primary-600' : 'text-white'
-            }`}>
-              Florid<span className="text-primary-500">Paints</span>
-              <span className="text-base font-normal">.com</span>
-            </span>
+            <img src={Logo} alt="Florid Paints Logo" className={`h-28 w-auto transition-all duration-300 ${isScrolled ? '' : 'drop-shadow-lg'}`} />
           </button>
 
           {/* Desktop Navigation */}
