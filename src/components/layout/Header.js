@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Logo from '../../assets/images/logos/Asset 1@8x.png';
+import Logo from '../../assets/images/logos/Asset 1@8x.png';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -25,6 +26,7 @@ const Header = () => {
     <header 
       className={`fixed w-full top-0 z-50 transition-all duration-300 ${
         isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-2'
+        isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-2'
       }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -34,13 +36,7 @@ const Header = () => {
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="flex items-center space-x-2 focus:outline-none"
           >
-            <span className={`text-3xl font-extrabold font-['Poppins'] ${
-              isScrolled ? 'text-primary-600' : 'text-white'
-            }`}>
-              Florid<span className="text-primary-500">Paints</span>
-              <span className="text-base font-normal">.com</span>
-              <span className="text-base font-normal">.com</span>
-            </span>
+            <img src={Logo} alt="Florid Paints Logo" className={`h-28 w-auto transition-all duration-300 ${isScrolled ? '' : 'drop-shadow-lg'}`} />
           </button>
 
           {/* Desktop Navigation */}
@@ -61,6 +57,15 @@ const Header = () => {
             >
               Colors & Paints
             </button>
+            <a 
+              href="/documents/florid-paints-price-list.pdf"
+              download="Florid-Paints-Price-List.pdf"
+              className={`text-base font-medium tracking-wide hover:text-primary-500 transition-colors ${
+                isScrolled ? 'text-gray-600' : 'text-white'
+              }`}
+            >
+              Price List
+            </a>
             <a 
               href="/documents/florid-paints-price-list.pdf"
               download="Florid-Paints-Price-List.pdf"
@@ -94,6 +99,7 @@ const Header = () => {
               onClick={() => scrollToSection('contact')}
               className={`px-6 py-2.5 rounded-full text-base font-medium 
                 ${isScrolled 
+                  ? 'bg-primary-500 text-white hover:bg-primary-600' 
                   ? 'bg-primary-500 text-white hover:bg-primary-600' 
                   : 'border-2 border-white text-white hover:bg-white hover:text-gray-900'
                 } transition-colors`}
@@ -145,6 +151,13 @@ const Header = () => {
               >
                 Price List
               </a>
+              <a
+                href="/documents/florid-paints-price-list.pdf"
+                download="Florid-Paints-Price-List.pdf"
+                className="text-gray-600 text-base font-medium hover:text-primary-500 text-left"
+              >
+                Price List
+              </a>
               <button
                 onClick={() => scrollToSection('testimonials')}
                 className="text-gray-600 text-base font-medium hover:text-primary-500 text-left"
@@ -166,6 +179,7 @@ const Header = () => {
               </a>
               <button
                 onClick={() => scrollToSection('contact')}
+                className="bg-primary-500 text-white px-6 py-2.5 rounded-full text-base font-medium hover:bg-primary-600 text-center"
                 className="bg-primary-500 text-white px-6 py-2.5 rounded-full text-base font-medium hover:bg-primary-600 text-center"
               >
                 Get Quote
