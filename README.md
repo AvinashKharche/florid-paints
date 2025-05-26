@@ -1,6 +1,16 @@
 # FloridPaints - Premium Painting Services
 
-A modern web application for FloridPaints, offering premium quality paints and professional painting services in Florida.
+A modern web application for FloridPaints, offering premium quality paints and professional painting services in Florida. This platform provides an intuitive interface for customers to explore paint colors, request quotes, and schedule professional painting services.
+
+## Table of Contents
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+- [Environment Variables](#environment-variables)
+- [Features in Detail](#features-in-detail)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Features
 
@@ -18,9 +28,11 @@ A modern web application for FloridPaints, offering premium quality paints and p
 
 ## Tech Stack
 
-- **Frontend Framework**: React 18
-- **Styling**: Tailwind CSS with custom animations
+- **Frontend Framework**: React 18.2.0
+- **Styling**: Tailwind CSS 3.3.0 with custom animations
 - **Form Handling**: Custom form components with validation
+- **State Management**: React Context API
+- **Animation**: Framer Motion 10.0.0
 - **UI Components**: 
   - Reusable button component with variants
   - Form inputs with floating labels
@@ -66,21 +78,6 @@ src/
     └── data.js
 ```
 
-## Asset Organization
-
-The project follows these guidelines for asset organization:
-
-- **src/assets/**: For assets that are:
-  - Imported directly into components
-  - Need webpack processing
-  - Component-specific images
-  - UI elements and icons
-  - Examples:
-    - Service images
-    - Testimonial photos
-    - UI icons
-    - Brand logos
-
 ## Getting Started
 
 1. Clone the repository:
@@ -88,17 +85,58 @@ The project follows these guidelines for asset organization:
 git clone https://github.com/AvinashKharche/florid-paints.git
 ```
 
-2. Install dependencies:
+2. Navigate to the project directory:
+```bash
+cd florid-paints
+```
+
+3. Install dependencies:
 ```bash
 npm install
 ```
 
-3. Start the development server:
+4. Set up environment variables:
+   - Copy `.env.example` to `.env`
+   - Update the variables as needed
+
+5. Start the development server:
 ```bash
 npm start
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+6. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+## Environment Variables
+
+Create a `.env` file in the root directory with the following variables:
+
+```env
+REACT_APP_API_URL=your_api_url
+REACT_APP_GOOGLE_MAPS_API_KEY=your_google_maps_api_key
+REACT_APP_CONTACT_EMAIL=your_contact_email
+```
+
+## Features in Detail
+
+### Color Picker
+- Interactive color selection interface
+- Trending color palettes
+- Classic and modern color combinations
+- Save favorite colors
+- Share color combinations
+
+### Contact Form
+- **Floating Labels**: Smooth animations for better user experience
+- **Validation**: Real-time input validation with error messages
+- **Toast Notifications**: Success/error notifications for form submissions
+- **Phone Integration**: Click-to-call functionality
+- **Project Types**: Optional project type selection with predefined categories
+
+### Responsive Design
+- Mobile-first approach
+- Breakpoint-specific layouts
+- Touch-friendly interactions
+- Optimized images for different devices
 
 ## Available Scripts
 
@@ -106,16 +144,29 @@ npm start
 - `npm test` - Launches the test runner
 - `npm run build` - Builds the app for production
 - `npm run eject` - Ejects from Create React App (one-way operation)
+- `npm run lint` - Runs ESLint to check code quality
+- `npm run format` - Formats code using Prettier
 
-## Form Features
+## Deployment
 
-The contact form includes several enhanced features:
+The application can be deployed to various platforms:
 
-- **Floating Labels**: Smooth animations for better user experience
-- **Validation**: Real-time input validation with error messages
-- **Toast Notifications**: Success/error notifications for form submissions
-- **Phone Integration**: Click-to-call functionality
-- **Project Types**: Optional project type selection with predefined categories
+1. **Vercel** (Recommended):
+```bash
+npm install -g vercel
+vercel
+```
+
+2. **Netlify**:
+```bash
+npm install -g netlify-cli
+netlify deploy
+```
+
+3. **GitHub Pages**:
+```bash
+npm run deploy
+```
 
 ## Contributing
 
@@ -125,6 +176,16 @@ The contact form includes several enhanced features:
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
+### Pull Request Process
+1. Update the README.md with details of changes if needed
+2. Update the documentation if needed
+3. Ensure all tests pass
+4. Follow the existing code style
+
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Support
+
+For support, email support@floridpaints.com or join our Slack channel.
