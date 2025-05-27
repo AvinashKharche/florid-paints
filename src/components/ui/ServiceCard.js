@@ -2,24 +2,30 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const ServiceCard = ({ service }) => (
-  <div className="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-102 hover:shadow-xl">
-    <div className="aspect-w-16 aspect-h-9">
+  <div className="group bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-102 hover:shadow-xl">
+    <div className="relative aspect-w-16 aspect-h-9 overflow-hidden">
       <img 
         src={service.image} 
         alt={service.title}
-        className="w-full h-64 object-cover hover:scale-105 transition-transform duration-700"
+        className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
       />
     </div>
-    <div className="p-8">
-      <h3 className="text-2xl font-bold text-gray-900 mb-4">{service.title}</h3>
-      <p className="text-gray-600 mb-6">{service.description}</p>
-      <ul className="space-y-3">
+    
+    <div className="p-6">
+      <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary-600 transition-colors duration-300">
+        {service.title}
+      </h3>
+      <p className="text-gray-600 mb-4 leading-relaxed">{service.description}</p>
+      
+      <ul className="space-y-2">
         {service.features.map((feature, index) => (
-          <li key={index} className="flex items-center text-gray-600 hover-lift">
-            <svg className="h-5 w-5 text-primary-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-            </svg>
-            {feature}
+          <li key={index} className="flex items-center text-gray-700 text-sm">
+            <div className="w-4 h-4 bg-primary-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+              <svg className="h-2 w-2 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <span>{feature}</span>
           </li>
         ))}
       </ul>

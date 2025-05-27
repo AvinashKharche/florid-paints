@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import VibrantSectionHeader from '../ui/VibrantSectionHeader';
 
 const SectionLayout = ({
   id,
@@ -15,28 +16,30 @@ const SectionLayout = ({
   const backgrounds = {
     white: 'bg-white',
     gray: 'bg-gray-50',
-    dark: 'bg-gray-900 text-white',
-    gradient: 'bg-gradient-to-b from-gray-50 to-white'
+    dark: 'bg-dark-500 text-white',
+    gradient: 'bg-gradient-to-br from-gray-50 to-white',
+    vibrant: 'bg-primary-500 text-white',
+    rainbow: 'bg-gradient-to-r from-primary-500 to-primary-600 text-white'
   };
 
   return (
-    <section id={id} className={`py-16 ${backgrounds[background]} ${className}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id={id} className={`relative py-16 ${backgrounds[background]} ${className}`}>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {(title || description) && (
-          <div className="text-center mb-12 animate-fade-in">
-            {title && (
-              <h2 className={`text-4xl font-bold mb-4 ${titleClassName}`}>
-                {title}
-              </h2>
-            )}
-            {description && (
-              <p className={`text-xl max-w-2xl mx-auto ${
-                background === 'dark' ? 'text-gray-300' : 'text-gray-600'
-              } ${descriptionClassName}`}>
-                {description}
-              </p>
-            )}
-          </div>
+          <VibrantSectionHeader
+            title={title}
+            description={description}
+            titleClassName={`${
+              background === 'dark' || background === 'vibrant' || background === 'rainbow' 
+                ? 'text-white' 
+                : 'text-gray-900'
+            } ${titleClassName}`}
+            descriptionClassName={`${
+              background === 'dark' || background === 'vibrant' || background === 'rainbow' 
+                ? 'text-gray-200' 
+                : 'text-gray-600'
+            } ${descriptionClassName}`}
+          />
         )}
         <div className={contentClassName}>
           {children}
@@ -55,7 +58,7 @@ SectionLayout.propTypes = {
   titleClassName: PropTypes.string,
   descriptionClassName: PropTypes.string,
   contentClassName: PropTypes.string,
-  background: PropTypes.oneOf(['white', 'gray', 'dark', 'gradient'])
+  background: PropTypes.oneOf(['white', 'gray', 'dark', 'gradient', 'vibrant', 'rainbow'])
 };
 
 export default SectionLayout; 

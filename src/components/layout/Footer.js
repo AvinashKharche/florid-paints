@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from '../../assets/images/logos/Asset 1@8x.png';
+import Logo from '../../assets/images/logos/logo@8x.png';
 
 const Footer = () => {
   const scrollToSection = (sectionId) => {

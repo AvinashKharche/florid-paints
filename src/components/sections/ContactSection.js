@@ -111,10 +111,10 @@ const ContactSection = () => {
       id="contact"
       title="Get in Touch"
       description="Request a quote or consultation for your painting project"
-      background="dark"
+      background="gray"
     >
       <div className="max-w-3xl mx-auto">
-        <div className="bg-gray-800/50 backdrop-blur-lg rounded-2xl p-8 shadow-xl animate-fade-in">
+        <div className="bg-white rounded-xl p-8 shadow-lg">
           <form 
             name="contact"
             method="POST"

@@ -18,8 +18,8 @@ const FormSelect = ({
         value={value}
         onChange={onChange}
         required={required}
-        className={`w-full px-5 pt-6 pb-2 bg-gray-800/50 rounded-xl text-white border
-                   ${error ? 'border-red-500' : 'border-gray-600'}
+        className={`w-full px-5 pt-6 pb-2 bg-gray-50 rounded-lg text-gray-900 border
+                   ${error ? 'border-red-500' : 'border-gray-300'}
                    focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20
                    transition-all duration-300 appearance-none cursor-pointer peer`}
       >
@@ -31,15 +31,15 @@ const FormSelect = ({
         ))}
       </select>
       <label 
-        className={`absolute text-gray-400 duration-300 transform
-                   left-5 z-10 origin-[0] peer-focus:text-primary-400
+        className={`absolute text-gray-600 duration-300 transform
+                   left-5 z-10 origin-[0] peer-focus:text-primary-600
                    ${value ? 'text-xs top-3' : 'text-base top-[18px]'}
-                   ${error ? 'text-red-500' : value ? 'text-primary-400' : 'text-gray-400'}`}
+                   ${error ? 'text-red-500' : value ? 'text-primary-600' : 'text-gray-600'}`}
       >
         {label}
       </label>
       <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none">
-        <Icon name="chevronDown" className="w-5 h-5 text-gray-400" />
+        <Icon name="chevronDown" className="w-5 h-5 text-gray-600" />
       </div>
       {error && (
         <p className="mt-1 text-sm text-red-500">{error}</p>

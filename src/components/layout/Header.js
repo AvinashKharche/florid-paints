@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Logo from '../../assets/images/logos/Asset 1@8x.png';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -28,15 +27,7 @@ const Header = () => {
       }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <button 
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="flex items-center space-x-2 focus:outline-none"
-          >
-            <img src={Logo} alt="Florid Paints Logo" className={`h-28 w-auto transition-all duration-300 ${isScrolled ? '' : 'drop-shadow-lg'}`} />
-          </button>
-
+        <div className="flex items-center justify-center">
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             <button 
@@ -99,7 +90,7 @@ const Header = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden focus:outline-none"
+            className="md:hidden focus:outline-none absolute right-4"
           >
             <svg 
               className={`w-7 h-7 ${isScrolled ? 'text-gray-600' : 'text-white'}`}

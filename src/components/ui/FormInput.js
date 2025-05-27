@@ -20,20 +20,20 @@ const FormInput = ({
         onChange={onChange}
         placeholder={placeholder}
         required={required}
-        className={`w-full px-5 pt-6 pb-2 bg-gray-800/50 rounded-xl text-white border
-                   ${error ? 'border-red-500' : 'border-gray-600'}
+        className={`w-full px-5 pt-6 pb-2 bg-gray-50 rounded-lg text-gray-900 border
+                   ${error ? 'border-red-500' : 'border-gray-300'}
                    focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20
                    transition-all duration-300 peer`}
       />
       <label 
-        className={`absolute text-gray-400 duration-300 transform -translate-y-3
-                   top-5 left-5 z-10 origin-[0] peer-focus:text-primary-400
+        className={`absolute text-gray-600 duration-300 transform -translate-y-3
+                   top-5 left-5 z-10 origin-[0] peer-focus:text-primary-600
                    peer-placeholder-shown:scale-100 
                    peer-placeholder-shown:translate-y-0
                    peer-focus:scale-75
                    peer-focus:-translate-y-4
                    ${value ? 'scale-75 -translate-y-4' : ''}
-                   ${error ? 'text-red-500' : 'text-gray-400'}`}
+                   ${error ? 'text-red-500' : 'text-gray-600'}`}
       >
         {label}
       </label>

@@ -49,7 +49,7 @@ const ColorSwatch = ({ color, name, onSelect, isSelected }) => (
     onMouseEnter={() => onSelect(color)}
   >
     <div
-      className={`h-24 w-full rounded-xl shadow-md transition-all duration-300 
+      className={`h-24 w-full rounded-lg shadow-md transition-all duration-300
         ${isSelected 
           ? 'ring-2 ring-primary-500 ring-offset-2 shadow-lg scale-105' 
           : 'hover:shadow-lg hover:ring-2 hover:ring-primary-300 hover:ring-offset-2'}`}
@@ -81,26 +81,21 @@ const ColorPicker = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div className="text-center mb-12">
-        <h2 className="text-4xl font-bold text-gray-900 mb-4">Find Your Perfect Color</h2>
-        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-          Explore our curated collection of premium paints to find the perfect shade for your space
-        </p>
-      </div>
+    <div className="relative">
+      {/* Remove the header since it's now handled by PaintSelectionSection */}
       
       <div className="space-y-12">
         {/* Category Selection */}
         <div className="flex justify-center">
-          <div className="inline-flex p-1.5 rounded-full bg-gray-100/80 backdrop-blur-sm">
+          <div className="inline-flex p-1 rounded-lg bg-gray-100">
             {COLOR_CATEGORIES.map((category) => (
               <button
                 key={category.id}
                 className={`
-                  px-4 sm:px-6 py-2 sm:py-2.5 rounded-full font-medium text-sm transition-all duration-300
+                  px-4 sm:px-6 py-2 sm:py-2.5 rounded-md font-medium text-sm transition-all duration-300
                   ${selectedCategory === category.id
-                    ? 'bg-white text-gray-900 shadow-sm'
-                    : 'text-gray-600 hover:text-gray-900'}
+                    ? 'bg-primary-500 text-white shadow-md'
+                    : 'text-gray-600 hover:text-gray-900 hover:bg-white'}
                 `}
                 onClick={() => handleCategoryChange(category.id)}
               >
@@ -111,15 +106,15 @@ const ColorPicker = () => {
         </div>
 
         {/* Mobile Color Preview */}
-        <div className="block lg:hidden bg-white rounded-xl shadow-sm border border-gray-100 p-4">
-          <div className="flex items-center space-x-4">
+        <div className="block lg:hidden bg-white rounded-2xl shadow-vibrant border-2 border-primary-200/50 p-6">
+          <div className="flex items-center space-x-6">
             <div
-              className="w-16 h-16 rounded-lg shadow-inner transition-colors duration-500"
+              className="w-20 h-20 rounded-2xl shadow-glow transition-colors duration-500 border-4 border-white"
               style={{ backgroundColor: selectedColor }}
             />
             <div className="flex-1">
-              <h3 className="font-medium text-gray-900 mb-1">Selected Color</h3>
-              <span className="font-mono text-sm bg-gray-100 px-2 py-1 rounded-full">
+              <h3 className="font-bold text-gray-900 mb-2 text-lg">Selected Color</h3>
+              <span className="font-mono text-sm bg-gradient-to-r from-primary-50 to-vibrant-green/10 px-4 py-2 rounded-xl border border-primary-200">
                 {selectedColor}
               </span>
             </div>
@@ -129,7 +124,7 @@ const ColorPicker = () => {
         {/* Color Display */}
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
           <div className="lg:col-span-2">
-            <h3 className="text-2xl font-semibold text-gray-900 mb-4 sm:mb-8">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6">
               {COLOR_CATEGORIES.find(cat => cat.id === selectedCategory)?.name} Colors
             </h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6">
@@ -147,39 +142,52 @@ const ColorPicker = () => {
 
           {/* Desktop Color Preview */}
           <div className="hidden lg:block lg:col-span-2">
-            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
-              <div className="mb-8">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Color Preview</h3>
-                <p className="text-gray-600">
+            <div className="bg-white rounded-3xl shadow-vibrant border-2 border-primary-200/50 p-8 relative overflow-hidden">
+              {/* Decorative Elements */}
+              <div className="absolute top-0 left-0 right-0 h-1 bg-rainbow-stripe"></div>
+              <div className="absolute top-4 right-4 w-3 h-3 bg-accent-yellow rounded-full animate-float opacity-60"></div>
+              <div className="absolute bottom-4 left-4 w-2 h-2 bg-accent-pink rounded-full animate-float opacity-60" style={{animationDelay: '1s'}}></div>
+              
+              <div className="mb-8 relative">
+                <h3 className="text-2xl font-black text-gray-900 mb-3">
+                  <span className="bg-gradient-to-r from-primary-600 to-vibrant-green bg-clip-text text-transparent">
+                    Color Preview
+                  </span>
+                </h3>
+                <p className="text-gray-600 font-medium">
                   See how your selected color looks in different lighting conditions
                 </p>
+                <div className="w-12 h-0.5 bg-rainbow-stripe rounded-full mt-3"></div>
               </div>
               
-              <div className="space-y-8">
+              <div className="space-y-8 relative">
                 <div>
                   <div
-                    className="h-40 rounded-xl shadow-inner transition-colors duration-500"
+                    className="h-48 rounded-2xl shadow-glow transition-colors duration-500 border-4 border-white relative overflow-hidden"
                     style={{ backgroundColor: selectedColor }}
-                  />
-                  <div className="mt-4 flex justify-between items-center">
-                    <span className="font-medium text-gray-900">Selected Color</span>
-                    <span className="font-mono text-sm bg-gray-100 px-3 py-1 rounded-full">
+                  >
+                    {/* Gradient overlay for depth */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"></div>
+                  </div>
+                  <div className="mt-6 flex justify-between items-center">
+                    <span className="font-bold text-gray-900 text-lg">Selected Color</span>
+                    <span className="font-mono text-sm bg-gradient-to-r from-primary-50 to-vibrant-green/10 px-4 py-2 rounded-xl border border-primary-200">
                       {selectedColor}
                     </span>
                   </div>
                 </div>
 
                 <button
-                  className="w-full px-6 py-3 bg-white border border-gray-200 rounded-xl
-                           text-sm font-medium text-gray-700 hover:bg-gray-50 
-                           transition-all duration-300 hover:shadow-md"
+                  className="w-full px-6 py-4 bg-gradient-to-r from-primary-50 to-vibrant-green/10 border-2 border-primary-200 rounded-2xl
+                           text-sm font-bold text-primary-700 hover:from-primary-100 hover:to-vibrant-green/20 
+                           transition-all duration-300 hover:shadow-vibrant hover:scale-105"
                   onClick={() => setShowCustomPicker(!showCustomPicker)}
                 >
-                  {showCustomPicker ? 'Hide Custom Picker' : 'Try Custom Color'}
+                  {showCustomPicker ? '🎨 Hide Custom Picker' : '🎨 Try Custom Color'}
                 </button>
 
                 {showCustomPicker && (
-                  <div className="mt-6 p-4 bg-gray-50 rounded-xl">
+                  <div className="mt-6 p-6 bg-gradient-to-br from-primary-50 to-vibrant-green/10 rounded-2xl border-2 border-primary-200/50">
                     <HexColorPicker
                       color={selectedColor}
                       onChange={setSelectedColor}
@@ -189,13 +197,13 @@ const ColorPicker = () => {
                 )}
               </div>
 
-              <div className="mt-8 pt-6 border-t border-gray-100">
+              <div className="mt-8 pt-6 border-t border-primary-200/50">
                 <button
                   onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
-                  className="w-full px-6 py-3 bg-primary-600 text-white rounded-xl font-medium
-                           hover:bg-primary-700 transition-all duration-300 hover:shadow-lg"
+                  className="w-full px-6 py-4 bg-gradient-to-r from-primary-500 to-vibrant-green text-white rounded-2xl font-bold
+                           hover:from-primary-600 hover:to-primary-500 transition-all duration-300 hover:shadow-vibrant hover:scale-105"
                 >
-                  Get Professional Advice
+                  💬 Get Professional Advice
                 </button>
               </div>
             </div>
@@ -203,18 +211,18 @@ const ColorPicker = () => {
         </div>
 
         {/* Mobile Actions */}
-        <div className="block lg:hidden space-y-4">
+        <div className="block lg:hidden space-y-6">
           <button
-            className="w-full px-6 py-3 bg-white border border-gray-200 rounded-xl
-                     text-sm font-medium text-gray-700 hover:bg-gray-50 
-                     transition-all duration-300 hover:shadow-md"
+            className="w-full px-6 py-4 bg-gradient-to-r from-primary-50 to-vibrant-green/10 border-2 border-primary-200 rounded-2xl
+                     text-sm font-bold text-primary-700 hover:from-primary-100 hover:to-vibrant-green/20 
+                     transition-all duration-300 hover:shadow-vibrant hover:scale-105"
             onClick={() => setShowCustomPicker(!showCustomPicker)}
           >
-            {showCustomPicker ? 'Hide Custom Picker' : 'Try Custom Color'}
+            {showCustomPicker ? '🎨 Hide Custom Picker' : '🎨 Try Custom Color'}
           </button>
 
           {showCustomPicker && (
-            <div className="p-4 bg-gray-50 rounded-xl">
+            <div className="p-6 bg-gradient-to-br from-primary-50 to-vibrant-green/10 rounded-2xl border-2 border-primary-200/50">
               <HexColorPicker
                 color={selectedColor}
                 onChange={setSelectedColor}
@@ -225,10 +233,10 @@ const ColorPicker = () => {
 
           <button
             onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
-            className="w-full px-6 py-3 bg-primary-600 text-white rounded-xl font-medium
-                     hover:bg-primary-700 transition-all duration-300 hover:shadow-lg"
+            className="w-full px-6 py-4 bg-gradient-to-r from-primary-500 to-vibrant-green text-white rounded-2xl font-bold
+                     hover:from-primary-600 hover:to-primary-500 transition-all duration-300 hover:shadow-vibrant hover:scale-105"
           >
-            Get Professional Advice
+            💬 Get Professional Advice
           </button>
         </div>
       </div>

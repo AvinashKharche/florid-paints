@@ -12,7 +12,7 @@ const ServicesSection = () => {
       id="services"
       title="Our Services"
       description="Professional painting services delivered with expertise and attention to detail"
-      background="gray"
+      background="gradient"
     >
       <div 
         ref={setRef}
