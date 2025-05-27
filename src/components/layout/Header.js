@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Logo from '../../assets/images/logos/Asset 1@8x.png';
-import Logo from '../../assets/images/logos/Asset 1@8x.png';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -65,15 +64,6 @@ const Header = () => {
             >
               Price List
             </a>
-            <a 
-              href="/documents/florid-paints-price-list.pdf"
-              download="Florid-Paints-Price-List.pdf"
-              className={`text-base font-medium tracking-wide hover:text-primary-500 transition-colors ${
-                isScrolled ? 'text-gray-600' : 'text-white'
-              }`}
-            >
-              Price List
-            </a>
             <button 
               onClick={() => scrollToSection('testimonials')}
               className={`text-base font-medium tracking-wide hover:text-primary-500 transition-colors ${
@@ -98,7 +88,6 @@ const Header = () => {
               onClick={() => scrollToSection('contact')}
               className={`px-6 py-2.5 rounded-full text-base font-medium 
                 ${isScrolled 
-                  ? 'bg-primary-500 text-white hover:bg-primary-600' 
                   ? 'bg-primary-500 text-white hover:bg-primary-600' 
                   : 'border-2 border-white text-white hover:bg-white hover:text-gray-900'
                 } transition-colors`}
@@ -150,13 +139,6 @@ const Header = () => {
               >
                 Price List
               </a>
-              <a
-                href="/documents/florid-paints-price-list.pdf"
-                download="Florid-Paints-Price-List.pdf"
-                className="text-gray-600 text-base font-medium hover:text-primary-500 text-left"
-              >
-                Price List
-              </a>
               <button
                 onClick={() => scrollToSection('testimonials')}
                 className="text-gray-600 text-base font-medium hover:text-primary-500 text-left"
@@ -178,7 +160,6 @@ const Header = () => {
               </a>
               <button
                 onClick={() => scrollToSection('contact')}
-                className="bg-primary-500 text-white px-6 py-2.5 rounded-full text-base font-medium hover:bg-primary-600 text-center"
                 className="bg-primary-500 text-white px-6 py-2.5 rounded-full text-base font-medium hover:bg-primary-600 text-center"
               >
                 Get Quote
